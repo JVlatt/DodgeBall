@@ -7,6 +7,7 @@ public class PlayerCtrl : MonoBehaviour
 {
     [SerializeField]private int playerID = 0;
     [SerializeField]private Player player;
+
     private PlayerEntity entity;
     void Start()
     {
@@ -16,20 +17,37 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
+        Inputs();
+    }
+
+    public void Inputs()
+    {
+        MoveInputs();
+        OrientInputs();
+        ActionsInputs();
+    }
+
+    public void MoveInputs()
+    {
         float dirX = player.GetAxis("MoveHorizontal");
         float dirZ = player.GetAxis("MoveVertical");
 
-        Vector3 moveDir = new Vector3(dirX, entity.rb.velocity.y, dirZ);
+        Vector3 moveDir = new Vector3(dirX, 0, dirZ);
         moveDir.Normalize();
         entity.Move(moveDir);
+    }
 
+    public void OrientInputs()
+    {
         float oriX = player.GetAxis("AimHorizontal");
         float oriZ = player.GetAxis("AimVertical");
+        Mathf.Clamp01(oriX);
+        Mathf.Clamp01(oriZ);
         Vector3 oriDir = new Vector3(oriX, 0, oriZ);
         oriDir.Normalize();
         entity.Orient(oriDir);
 
-        if(oriX == 0 && oriZ == 0)
+        if (Mathf.Abs(oriX) <= 0.2f && Mathf.Abs(oriZ) <= 0.2f)
         {
             entity.rightAxisTouch = false;
         }
@@ -37,5 +55,11 @@ public class PlayerCtrl : MonoBehaviour
         {
             entity.rightAxisTouch = true;
         }
+    }
+
+    public void ActionsInputs()
+    {
+        if (player.GetButtonDown("Catch"))
+            entity.TryCatch();
     }
 }

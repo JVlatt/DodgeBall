@@ -8,9 +8,11 @@ public class Ball : MonoBehaviour
     public float speed = 2.0f;
     public float multiplierFactor = 1.0f;
     private Rigidbody _rb;
+    [HideInInspector]public Collider _collider;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
     private void LateUpdate()
     {
@@ -22,6 +24,16 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Catch"))
+        {
+            other.GetComponentInParent<PlayerEntity>().Catch(this);
+            _rb.rotation = Quaternion.identity;
+            _collider.enabled = false;
         }
     }
 }

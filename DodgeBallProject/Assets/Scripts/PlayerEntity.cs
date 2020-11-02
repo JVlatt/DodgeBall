@@ -4,33 +4,24 @@ using UnityEngine;
 
 public class PlayerEntity : MonoBehaviour
 {
+    [Header("Speed")]
+    public float moveSpeed = 1.0f;
+    public float turnSpeed = 1.0f;
+    [SerializeField] private float _holdTime = 1.0f;
+    [SerializeField] private float _maxHoldTime = 5.0f;
+    [SerializeField] private float _catchCooldown = 5.0f;
+    private float _chargeClock = 0f;
+    private float _catchClock = 0f;
+    private float _dropClock = 0f;
+    private bool chargedShoot = false;
 
-    //Vitesse
-    private float acceleration;
-    private float moveSpeedMax;
-
-    //Inertie
-    private float friction;
-    private float turnFriction;
-
-    //Rotation
-    private float turnSpeed;
-
-    [Header("Vitesse")]
-    [Header("Stats Player")]
-    public float accelerationPlayer = 20f;
-    public float moveSpeedMaxPlayer = 10f;
-
-    [Header("Inertie")]
-    public float frictionPlayer = 0f;
-    public float turnFrictionPlayer = 20f;
-
-    [Header("Rotation")]
-    public float turnSpeedPlayer = 15f;
+    private Animator _anim;
+    private Ball playerBall = null;
 
     [Header("Game Objects")]
     private GameObject modelObj;
-
+    public Transform ballPivot;
+    public Transform launchPoint;
     //Dev vars
     private Vector3 _moveDir;
     private Vector3 _orientDir;
@@ -48,11 +39,7 @@ public class PlayerEntity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         modelObj = this.gameObject;
-        acceleration = accelerationPlayer;
-        moveSpeedMax = moveSpeedMaxPlayer;
-        friction = frictionPlayer;
-        turnFriction = turnFrictionPlayer;
-        turnSpeed = turnSpeedPlayer;
+        _anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -67,11 +54,32 @@ public class PlayerEntity : MonoBehaviour
             _UpdateMove();
             _UpdateModelOrient();
         }
+        if(playerBall)
+        {
+            if(rightAxisTouch)
+            {
+                _chargeClock += Time.deltaTime;
+                if (_chargeClock >= _holdTime)
+                    chargedShoot = true;
+                if (_chargeClock >= _maxHoldTime)
+                    LaunchBall();
+            }
+            else
+            {
+                if (chargedShoot)
+                    LaunchBall();
+                else
+                {
+                    _dropClock += Time.deltaTime;
+                    if (_dropClock > _maxHoldTime)
+                        LaunchBall();
+                }
+            }
+        }
+        if (_catchClock > 0f)
+            _catchClock -= Time.deltaTime;
 
-        Vector3 newPosition = transform.position;
-        newPosition.x += _velocity.x * Time.fixedDeltaTime;
-        newPosition.z += _velocity.z * Time.fixedDeltaTime;
-        rb.velocity = _velocity;
+        rb.velocity = new Vector3(_velocity.x,rb.velocity.y,_velocity.z);
     }
 
     #region Functions Move
@@ -85,7 +93,7 @@ public class PlayerEntity : MonoBehaviour
     {
         float startAngle = modelObj.transform.eulerAngles.y;
         float endAngle = startAngle + Vector3.SignedAngle(modelObj.transform.forward, _orientDir, Vector3.up);
-        float angle = Mathf.Lerp(startAngle, endAngle, turnSpeed * Time.deltaTime);
+        float angle = Mathf.Lerp(startAngle, endAngle, turnSpeed);
 
         Vector3 eulerAngles = modelObj.transform.eulerAngles;
         eulerAngles.y = angle;
@@ -96,56 +104,43 @@ public class PlayerEntity : MonoBehaviour
     {
         _moveDir = dir;
     }
-
-    public void StopMove()
-    {
-        stopMove = true;
-        _velocity = Vector3.zero;
-    }
-
-    public void RestartMove()
-    {
-        stopMove = false;
-    }
-
     private void _UpdateMove()
     {
-        if (_moveDir != Vector3.zero)
-        {
-
-            float turnAngle = Vector3.SignedAngle(_velocity, Vector3.zero, _moveDir);
-            turnAngle = Mathf.Abs(turnAngle);
-            float frictionRatio = turnAngle / 360f;
-            float turnFrictionWithRatio = turnFriction * frictionRatio;
-
-            _velocity += _moveDir * acceleration * Time.fixedDeltaTime;
-            if (_velocity.sqrMagnitude > moveSpeedMax * moveSpeedMax)
-            {
-                _velocity = _velocity.normalized * moveSpeedMax;
-            }
-
-            Vector3 frictionDir = _velocity.normalized;
-            _velocity -= frictionDir * turnFrictionWithRatio * Time.fixedDeltaTime;
-
+            _velocity = _moveDir * moveSpeed;
+            
             if (!rightAxisTouch)
             {
                 _orientDir = _velocity.normalized;
             }
-        }
-        else if (_velocity != Vector3.zero)
-        {
-            Vector3 frictionDir = _velocity.normalized;
-            float frictionToApply = friction * Time.fixedDeltaTime;
-            if (_velocity.sqrMagnitude <= frictionToApply * frictionToApply)
-            {
-                _velocity = Vector3.zero;
-            }
-            else
-            {
-                _velocity -= frictionDir * frictionToApply;               
-            }
-        }
     }
     #endregion
 
+    public void LaunchBall()
+    {
+        Vector3 ballDirection = (launchPoint.position - transform.position).normalized;
+        ballDirection.y = 0;
+        playerBall.transform.position = launchPoint.position;
+        playerBall.direction = ballDirection;
+        playerBall._collider.enabled = true;
+        playerBall.transform.parent = null;
+        playerBall = null;
+        _chargeClock = 0f;
+        _dropClock = 0f;
+        _catchClock = _catchCooldown;
+    }
+
+    public void TryCatch()
+    {
+        if (_catchClock > 0f || playerBall) return;
+
+        _catchClock = _catchCooldown;
+        _anim.SetTrigger("Catch");
+    }
+    public void Catch(Ball ball)
+    {
+        playerBall = ball;
+        playerBall.direction = Vector3.zero;
+        playerBall.transform.parent = ballPivot;
+        playerBall.transform.localPosition = Vector3.zero;
+    }
 }

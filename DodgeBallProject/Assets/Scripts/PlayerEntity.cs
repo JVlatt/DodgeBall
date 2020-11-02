@@ -31,15 +31,18 @@ public class PlayerEntity : MonoBehaviour
     [Header("Game Objects")]
     private GameObject modelObj;
 
-    private bool stopMove;
-
+    //Dev vars
     private Vector3 _moveDir;
-    private Vector3 _orientDir = Vector3.back;
+    private Vector3 _orientDir;
     private Vector3 _velocity = Vector3.zero;
 
     [HideInInspector]
     public Rigidbody rb;
     private Animator animator;
+    [HideInInspector]
+    public bool stopMove;
+    [HideInInspector]
+    public bool rightAxisTouch;
 
     private void Awake()
     {
@@ -62,6 +65,7 @@ public class PlayerEntity : MonoBehaviour
         if (!stopMove)
         {
             _UpdateMove();
+            _UpdateModelOrient();
         }
 
         Vector3 newPosition = transform.position;
@@ -72,7 +76,12 @@ public class PlayerEntity : MonoBehaviour
 
     #region Functions Move
 
-    private void _UpdateModelOrient()
+    public void Orient(Vector3 ori)
+    {
+        _orientDir = ori;
+    }
+
+    public void _UpdateModelOrient()
     {
         float startAngle = modelObj.transform.eulerAngles.y;
         float endAngle = startAngle + Vector3.SignedAngle(modelObj.transform.forward, _orientDir, Vector3.up);
@@ -118,7 +127,10 @@ public class PlayerEntity : MonoBehaviour
             Vector3 frictionDir = _velocity.normalized;
             _velocity -= frictionDir * turnFrictionWithRatio * Time.fixedDeltaTime;
 
-            _orientDir = _velocity.normalized;
+            if (!rightAxisTouch)
+            {
+                _orientDir = _velocity.normalized;
+            }
         }
         else if (_velocity != Vector3.zero)
         {

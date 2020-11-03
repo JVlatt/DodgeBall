@@ -17,18 +17,43 @@ public class TeamManager : MonoBehaviour
     public List<int> redTeam;
     private bool teamsCreated = false;
 
+    public List<GameObject> displayList;
+    public List<GameObject> displayPosList;
+
     void Start()
     {
         launchGame = false;
 
-        var tmp = GameObject.Find("Controllers");
+        var controllers = GameObject.Find("Controllers");
+        var controllersDisplay = GameObject.Find("Canvas Selection");
+        var nbPlayers = GameObject.FindObjectOfType<NumberOfPlayers>().numberOfPlayers;
 
-        for(int i = 0; i < tmp.transform.childCount; i++)
+        if(nbPlayers != null)
         {
-            if (tmp.transform.GetChild(i).gameObject.activeSelf)
+            for (int i = 0; i < nbPlayers; i++)
             {
-                playerList.Add(tmp.transform.GetChild(i).GetComponent<TeamSelection>());
+                controllers.transform.GetChild(i).gameObject.SetActive(true);
+                controllersDisplay.transform.GetChild(i + 7).gameObject.SetActive(true);
+                displayList.Add(controllersDisplay.transform.GetChild(i + 7).gameObject);
             }
+        }
+
+        for(int i = 0; i < controllers.transform.childCount; i++)
+        {
+            if (controllers.transform.GetChild(i).gameObject.activeSelf)
+            {
+                playerList.Add(controllers.transform.GetChild(i).GetComponent<TeamSelection>());
+            }
+        }
+
+        displayPosList.Add(GameObject.Find("2playersCase"));
+        displayPosList.Add(GameObject.Find("3playersCase"));
+        displayPosList.Add(GameObject.Find("4playersCase"));
+        displayPosList.Add(GameObject.Find("5playersCase"));
+
+        if(nbPlayers < 6)
+        {
+            Display(nbPlayers);
         }
     }
 
@@ -45,6 +70,14 @@ public class TeamManager : MonoBehaviour
                 CreateTeams();
                 teamsCreated = true;
             }
+        }
+    }
+
+    void Display(int nbPlayers)
+    {
+        for(int i = 0; i < nbPlayers; i++)
+        {
+            displayList[i].transform.position = displayPosList[nbPlayers - 2].transform.GetChild(i).gameObject.transform.position;
         }
     }
 

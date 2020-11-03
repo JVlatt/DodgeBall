@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Vector3 direction;
     public float speed = 2.0f;
+    public float maxSpeed = 2.0f;
     public float speedBoost = 0f;
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
@@ -16,6 +17,7 @@ public class Ball : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
         _rb.velocity = direction.normalized * (speed + speedBoost);
     }
 
@@ -24,6 +26,10 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+        }
+        if (collision.gameObject.CompareTag("Goal"))
+        {
+            collision.gameObject.GetComponent<Goal>().Hurt();
         }
     }
 
@@ -37,11 +43,8 @@ public class Ball : MonoBehaviour
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
-            speedBoost += 7.5f;
-        }
-        if(other.CompareTag("Goal"))
-        {
-            other.GetComponent<Goal>().Hurt();
+            if(speed + speedBoost <= maxSpeed)
+                speedBoost += 7.5f;
         }
     }
 }

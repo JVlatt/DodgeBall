@@ -75,6 +75,7 @@ public class PlayerEntity : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
         _UpdateGravity();
 
         if (!stopMove)

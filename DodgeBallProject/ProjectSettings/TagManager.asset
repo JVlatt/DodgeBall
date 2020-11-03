@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Ball
   - Catch
+  - FxTemporaire
+  - Goal
   layers:
   - Default
   - TransparentFX

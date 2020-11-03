@@ -32,9 +32,18 @@ public class PlayerCtrl : MonoBehaviour
         float dirX = player.GetAxis("MoveHorizontal");
         float dirZ = player.GetAxis("MoveVertical");
 
-        Vector3 moveDir = new Vector3(dirX, 0, dirZ);
-        moveDir.Normalize();
-        entity.Move(moveDir);
+        if (entity.isOnGround)
+        {
+            Vector3 moveDir = new Vector3(dirX, 0, dirZ);
+            moveDir.Normalize();
+            entity.Move(moveDir);
+        }
+        else
+        {
+            Vector3 moveDir = entity.rb.velocity;
+            moveDir.Normalize();
+            entity.Move(moveDir);
+        }
     }
 
     public void OrientInputs()

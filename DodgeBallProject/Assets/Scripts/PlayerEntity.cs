@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerEntity : MonoBehaviour
 {
     [Header("Speed")]
     public float moveSpeed = 1.0f;
     public float turnSpeed = 1.0f;
+    [Header("Abilities")]
     [SerializeField] private float _dashForce = 1.0f;
     [SerializeField] private float _dashDuration = 1.0f;
     [SerializeField] private float _dashCooldown = 5.0f;
@@ -26,6 +29,19 @@ public class PlayerEntity : MonoBehaviour
     private GameObject modelObj;
     public Transform ballPivot;
     public Transform launchPoint;
+    private Vector3 spawnPoint;
+
+    [Header("Respawn")]
+    public float waitForSpawn = 3.0f;
+    private float waitForSpawnClock = 0f;
+    public float respawnCooldown = 5.0f;
+    private float respawnCooldownClock = 0f;
+    public GameObject respawnDisplay;
+    private GameObject respawnDisplayInstance;
+    private Text respawnText;
+    private Image respawnImage;
+    private bool respawnDisplayCreated;
+
     //Dev vars
     private Vector3 _moveDir;
     private Vector3 _orientDir;
@@ -38,6 +54,8 @@ public class PlayerEntity : MonoBehaviour
     public bool stopMove;
     [HideInInspector]
     public bool rightAxisTouch;
+    [HideInInspector]
+    public bool isOnGround;
 
     private void Awake()
     {
@@ -48,11 +66,15 @@ public class PlayerEntity : MonoBehaviour
 
     void Start()
     {
-
+        waitForSpawnClock = waitForSpawn;
+        respawnCooldownClock = respawnCooldown;
+        spawnPoint = this.transform.position;
     }
 
     private void FixedUpdate()
     {
+        _UpdateGravity();
+
         if (!stopMove)
         {
             _UpdateMove();
@@ -123,6 +145,59 @@ public class PlayerEntity : MonoBehaviour
             }
     }
     #endregion
+
+    private void _UpdateGravity()
+    {
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            //Debug.Log("Did Hit");
+            isOnGround = true;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
+            //Debug.Log("Did not Hit");
+            isOnGround = false;
+            waitForSpawn -= Time.deltaTime;
+            if(waitForSpawn <= 0)
+            {
+                respawnCooldown -= Time.deltaTime;
+            }
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        if(waitForSpawn <= 0)
+        {
+            rb.isKinematic = true;
+            if (!respawnDisplayCreated)
+            {
+                respawnDisplayInstance = Instantiate(respawnDisplay);
+                respawnDisplayInstance.transform.position = spawnPoint;
+                respawnText = respawnDisplayInstance.GetComponentInChildren<Text>();
+                respawnImage = respawnDisplayInstance.GetComponentInChildren<Image>();
+                respawnDisplayCreated = true;
+            }
+
+            respawnText.text = respawnCooldown.ToString("F1");
+            respawnImage.fillAmount = respawnCooldown / respawnCooldownClock;
+
+            if (respawnCooldown <= 0)
+            {
+                rb.isKinematic = false;
+                this.transform.position = spawnPoint;
+                waitForSpawn = waitForSpawnClock;
+                respawnCooldown = respawnCooldownClock;
+                Destroy(respawnDisplayInstance);
+                respawnDisplayCreated = false;
+            }
+        }
+    }
 
     public void LaunchBall()
     {

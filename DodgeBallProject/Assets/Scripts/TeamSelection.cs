@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TeamSelection : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class TeamSelection : MonoBehaviour
     [HideInInspector]
     public bool isReady;
 
+    public static bool canLeave = true;
+    private float cd = 0f;
+    private float cdc = 0.2f;
+
     public enum Team
     {
         None,
@@ -38,8 +43,17 @@ public class TeamSelection : MonoBehaviour
 
     void Update()
     {
-        float cursorPos = player.GetAxis("Move");
+        if(cd > 0)
+        {
+            cd -= Time.deltaTime;
+        }
 
+        if (isReady)
+        {
+            canLeave = false;
+        }
+
+        float cursorPos = player.GetAxis("Move");
 
         if (!hasJoin && player.GetButtonDown("Join"))
         {
@@ -81,7 +95,14 @@ public class TeamSelection : MonoBehaviour
             cursorPosList.Clear();
             hasJoin = false;
             isReady = false;
+            canLeave = true;
             curTeam = Team.None;
+            cd = cdc;
+        }
+
+        if (!hasJoin && canLeave && player.GetButtonDown("Leave") && cd <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         if (hasJoin && !isReady && cursorPos > 0)

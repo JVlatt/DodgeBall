@@ -82,6 +82,7 @@ public class PlayerEntity : MonoBehaviour
         }
         if(playerBall)
         {
+            playerBall.transform.position = ballPivot.transform.position;
             if(rightAxisTouch)
             {
                 _chargeClock += Time.deltaTime;
@@ -207,7 +208,6 @@ public class PlayerEntity : MonoBehaviour
         playerBall.direction = ballDirection;
         playerBall._collider.enabled = true;
         playerBall._rb.isKinematic = false;
-        playerBall.transform.parent = null;
         playerBall = null;
         chargedShoot = false;
         _chargeClock = 0f;
@@ -226,8 +226,6 @@ public class PlayerEntity : MonoBehaviour
     {
         playerBall = ball;
         playerBall.direction = Vector3.zero;
-        playerBall.transform.parent = ballPivot;
-        playerBall.transform.localPosition = Vector3.zero;
     }
 
     public IEnumerator Dash()

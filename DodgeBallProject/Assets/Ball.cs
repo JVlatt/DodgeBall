@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Vector3 direction;
     public float speed = 2.0f;
-    public float multiplierFactor = 1.0f;
+    public float speedBoost = 0f;
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
     private void Awake()
@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour
     }
     private void LateUpdate()
     {
-        _rb.velocity = direction.normalized * speed * multiplierFactor;
+        _rb.velocity = direction.normalized * (speed + speedBoost);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,6 +37,11 @@ public class Ball : MonoBehaviour
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
+            speedBoost += 7.5f;
+        }
+        if(other.CompareTag("Goal"))
+        {
+            other.GetComponent<Goal>().Hurt();
         }
     }
 }

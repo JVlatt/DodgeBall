@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +72,7 @@ public class PlayerEntity : MonoBehaviour
         waitForSpawnClock = waitForSpawn;
         respawnCooldownClock = respawnCooldown;
         spawnPoint = this.transform.position;
+        GameManager.Instance.players.Add(this);
     }
 
     private void FixedUpdate()
@@ -239,5 +241,10 @@ public class PlayerEntity : MonoBehaviour
         rb.AddForce(_moveDir * _dashForce, ForceMode.VelocityChange);
         yield return new WaitForSeconds(_dashDuration);
         rb.velocity = Vector3.zero;
+    }
+
+    public void Reset()
+    {
+        transform.position = spawnPoint;
     }
 }

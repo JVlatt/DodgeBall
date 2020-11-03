@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public int hp = 5;
+    public int maxHp = 5;
+    private int hp;
     void Start()
     {
-        
+        hp = maxHp;
+        GameManager.Instance.goals.Add(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Reset()
     {
-        
+        hp = maxHp;
     }
 
     public void Hurt()

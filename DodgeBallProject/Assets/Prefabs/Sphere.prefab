@@ -126,5 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0, z: -1.5}
-  speed: 10
-  multiplierFactor: 1
+  speed: 30
+  maxSpeed: 2
+  speedBoost: 0
+  _rb: {fileID: 0}
+  _collider: {fileID: 0}

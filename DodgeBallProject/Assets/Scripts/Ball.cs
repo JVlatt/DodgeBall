@@ -15,6 +15,11 @@ public class Ball : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
     }
+    private void Start()
+    {
+        GameManager.Instance.balls.Add(this);
+    }
+
     private void LateUpdate()
     {
         if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
@@ -30,6 +35,8 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             collision.gameObject.GetComponent<Goal>().Hurt();
+            GameManager.Instance.LaunchBall();
+            Destroy(this.gameObject);
         }
     }
 

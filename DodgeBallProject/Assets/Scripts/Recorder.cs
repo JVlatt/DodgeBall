@@ -8,17 +8,18 @@ using UnityEditor.Animations;
 
 public class Recorder : MonoBehaviour
 {
-    public AnimationClip clip1;
+    private AnimationClip clip1;
     private Animation m_player;
     public float clipDuration;
     private float clipClock = 0f;
-    private GameObjectRecorder m_Recorder;
+    public GameObjectRecorder m_Recorder;
     private bool isRecording = false;
     private bool recordA = true;
     private bool doubleRecord = false;
     void Start()
     {
         // Create recorder and record the script GameObject.
+        clip1 = new AnimationClip();
         m_Recorder = new GameObjectRecorder(gameObject);
         m_player = GetComponent<Animation>();
         // Bind all the Transforms on the GameObject and all its children.

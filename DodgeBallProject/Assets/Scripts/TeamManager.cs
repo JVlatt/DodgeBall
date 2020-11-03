@@ -13,12 +13,18 @@ public class TeamManager : MonoBehaviour
     [HideInInspector]
     public int i = 0;
 
+    [HideInInspector]
     public List<int> blueTeam;
+    [HideInInspector]
     public List<int> redTeam;
     private bool teamsCreated = false;
 
+    [HideInInspector]
     public List<GameObject> displayList;
+    [HideInInspector]
     public List<GameObject> displayPosList;
+
+    public GameObject teamLoader;
 
     void Start()
     {
@@ -68,6 +74,7 @@ public class TeamManager : MonoBehaviour
             if (!teamsCreated)
             {
                 CreateTeams();
+                teamLoader.SetActive(true);
                 teamsCreated = true;
             }
         }

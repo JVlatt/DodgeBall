@@ -102,6 +102,7 @@ public class TeamSelection : MonoBehaviour
 
         if (!hasJoin && canLeave && player.GetButtonDown("Leave") && cd <= 0)
         {
+            Destroy(GameObject.Find("NumberOfPlayers"));
             SceneManager.LoadScene("MainMenu");
         }
 

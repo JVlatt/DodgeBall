@@ -16,6 +16,7 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] private float _holdTime = 1.0f;
     [SerializeField] private float _maxHoldTime = 5.0f;
     [SerializeField] private float _catchCooldown = 5.0f;
+    [SerializeField] private float _catchDurationMultiplier = 1.0f;
     private float _chargeClock = 0f;
     private float _catchClock = 0f;
     private float _dropClock = 0f;
@@ -62,6 +63,7 @@ public class PlayerEntity : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         modelObj = this.gameObject;
         _anim = GetComponent<Animator>();
+        _anim.SetFloat("CatchDuration", _catchDurationMultiplier);
     }
 
     void Start()

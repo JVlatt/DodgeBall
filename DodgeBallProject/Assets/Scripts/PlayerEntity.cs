@@ -7,12 +7,16 @@ public class PlayerEntity : MonoBehaviour
     [Header("Speed")]
     public float moveSpeed = 1.0f;
     public float turnSpeed = 1.0f;
+    [SerializeField] private float _dashForce = 1.0f;
+    [SerializeField] private float _dashDuration = 1.0f;
+    [SerializeField] private float _dashCooldown = 5.0f;
     [SerializeField] private float _holdTime = 1.0f;
     [SerializeField] private float _maxHoldTime = 5.0f;
     [SerializeField] private float _catchCooldown = 5.0f;
     private float _chargeClock = 0f;
     private float _catchClock = 0f;
     private float _dropClock = 0f;
+    private float _dashClock = 0f;
     private bool chargedShoot = false;
 
     private Animator _anim;
@@ -79,6 +83,11 @@ public class PlayerEntity : MonoBehaviour
         if (_catchClock > 0f)
             _catchClock -= Time.deltaTime;
 
+        if(_dashClock > 0f)
+        {
+            _dashClock -= Time.deltaTime;
+        }
+
         rb.velocity = new Vector3(_velocity.x,rb.velocity.y,_velocity.z);
     }
 
@@ -142,5 +151,15 @@ public class PlayerEntity : MonoBehaviour
         playerBall.direction = Vector3.zero;
         playerBall.transform.parent = ballPivot;
         playerBall.transform.localPosition = Vector3.zero;
+    }
+
+    public IEnumerator Dash()
+    {
+        if (_dashClock > 0) yield break;
+
+        _dashClock = _dashCooldown;
+        rb.AddForce(_moveDir * _dashForce, ForceMode.VelocityChange);
+        yield return new WaitForSeconds(_dashDuration);
+        rb.velocity = Vector3.zero;
     }
 }

@@ -61,5 +61,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (player.GetButtonDown("Catch"))
             entity.TryCatch();
+
+        if (player.GetButtonDown("Dash"))
+            entity.StartCoroutine(entity.Dash());
     }
 }

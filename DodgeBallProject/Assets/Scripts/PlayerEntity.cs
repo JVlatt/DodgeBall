@@ -23,7 +23,7 @@ public class PlayerEntity : MonoBehaviour
     private bool chargedShoot = false;
 
     private Animator _anim;
-    private Ball playerBall = null;
+    [HideInInspector]public Ball playerBall = null;
 
     [Header("Game Objects")]
     private GameObject modelObj;

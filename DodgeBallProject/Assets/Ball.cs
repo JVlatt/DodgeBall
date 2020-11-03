@@ -31,6 +31,8 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Catch"))
         {
+            PlayerEntity entity = other.GetComponentInParent<PlayerEntity>();
+            if (!entity || entity.playerBall != null) return;
             _collider.enabled = false;
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;

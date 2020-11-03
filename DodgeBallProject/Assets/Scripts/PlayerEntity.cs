@@ -131,8 +131,10 @@ public class PlayerEntity : MonoBehaviour
         playerBall.transform.position = launchPoint.position;
         playerBall.direction = ballDirection;
         playerBall._collider.enabled = true;
+        playerBall._rb.isKinematic = false;
         playerBall.transform.parent = null;
         playerBall = null;
+        chargedShoot = false;
         _chargeClock = 0f;
         _dropClock = 0f;
         _catchClock = _catchCooldown;

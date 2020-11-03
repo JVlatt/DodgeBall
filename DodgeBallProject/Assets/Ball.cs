@@ -7,8 +7,8 @@ public class Ball : MonoBehaviour
     public Vector3 direction;
     public float speed = 2.0f;
     public float multiplierFactor = 1.0f;
-    private Rigidbody _rb;
-    [HideInInspector]public Collider _collider;
+    [HideInInspector] public Rigidbody _rb;
+    [HideInInspector] public Collider _collider;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -31,9 +31,10 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Catch"))
         {
+            _collider.enabled = false;
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
-            _collider.enabled = false;
+            _rb.isKinematic = true;
         }
     }
 }

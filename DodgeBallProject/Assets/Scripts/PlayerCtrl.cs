@@ -8,11 +8,14 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]private int playerID = 0;
     [SerializeField]private Player player;
 
+    public PauseMenu pauseCanvas;
     private PlayerEntity entity;
+
     void Start()
     {
         player = ReInput.players.GetPlayer(playerID);
         entity = this.gameObject.transform.parent.GetComponent<PlayerEntity>();
+        pauseCanvas = GameObject.FindObjectOfType<PauseMenu>();
     }
 
     void Update()
@@ -74,5 +77,17 @@ public class PlayerCtrl : MonoBehaviour
 
         if (player.GetButtonDown("Dash"))
             entity.StartCoroutine(entity.Dash());
+
+        if (player.GetButtonDown("Pause"))
+        {
+            if (PauseMenu.isPaused)
+            {
+                pauseCanvas.Resume();
+            }
+            else
+            {
+                pauseCanvas.Pause();
+            }
+        }
     }
 }

@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GAME_STATE.FREEZE:
                 Reset();
-                StartCoroutine(WaitForSecondBall());
                 break;
             case GAME_STATE.PLAY:
                 LaunchBall();
@@ -121,7 +120,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator ScoringCoroutine()
     {
         SwitchState(GAME_STATE.FREEZE);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(10.0f);
         SwitchState(GAME_STATE.LAUNCH);
     }
     public void Reset()

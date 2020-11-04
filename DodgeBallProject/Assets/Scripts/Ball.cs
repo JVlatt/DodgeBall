@@ -19,14 +19,16 @@ public class Ball : MonoBehaviour
     {
         GameManager.Instance.balls.Add(this);
     }
-
-    private void LateUpdate()
+    public void Update()
     {
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
+    }
+    private void LateUpdate()
+    {
         if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         _rb.velocity = direction.normalized * (speed + speedBoost);
     }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
@@ -37,7 +39,6 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             collision.gameObject.GetComponent<Goal>().Hurt();
-            GameManager.Instance.LaunchBall();
             GameManager.Instance.balls.Remove(this);
             Destroy(this.gameObject);
         }

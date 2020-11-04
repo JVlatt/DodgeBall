@@ -23,13 +23,13 @@ public class Goal : MonoBehaviour
     public void Hurt()
     {
         hp--;
+        if(hp > 0)
+            GameManager.Instance.LaunchBall();
         switch (hp)
         {
             case 1:
-                //GameManager.Instance.recorder.StartRecord();
                 break;
             case 0:
-                //GameManager.Instance.recorder.StopRecord();
                 GameManager.Instance.AddPoint(gameObject.name);
                 break;
             default:

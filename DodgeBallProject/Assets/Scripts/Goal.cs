@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
@@ -8,11 +9,21 @@ public class Goal : MonoBehaviour
     private int hp;
 
     public GameObject hitVFX;
+    public Slider healthBar;
+    private Animation animBackground;
+    private Animation animFill;
 
     void Start()
     {
         hp = maxHp;
         GameManager.Instance.goals.Add(this);
+        animBackground = healthBar.transform.GetChild(0).GetComponent<Animation>();
+        animFill = healthBar.transform.GetChild(1).GetChild(0).GetComponent<Animation>();
+    }
+
+    private void Update()
+    {
+        healthBar.value = hp;
     }
 
     public void Reset()
@@ -23,6 +34,15 @@ public class Goal : MonoBehaviour
     public void Hurt(int damageIncrease)
     {
         hp -= damageIncrease;
+
+        if (animBackground.isPlaying)
+        {
+            animBackground.Rewind();
+            animFill.Rewind();
+        }
+
+        animBackground.Play();
+        animFill.Play();
 
         if (hp < 0)
             hp = 0;

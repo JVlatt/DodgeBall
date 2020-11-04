@@ -22,8 +22,8 @@ public class Ball : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         _rb.velocity = direction.normalized * (speed + speedBoost);
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class UIManager : MonoBehaviour
 
     public Text leftPoints;
     public Text rightPoints;
+    public GameObject launchTimerHolder;
+    public TextMeshProUGUI launchTimer;
 
     void Awake()
     {
@@ -30,5 +33,10 @@ public class UIManager : MonoBehaviour
     {
         leftPoints.text = GameManager.Instance.leftPoints.ToString();
         rightPoints.text = GameManager.Instance.rightPoints.ToString();
+    }
+
+    public void UpdateLaunchTimer(float value)
+    {
+        launchTimer.SetText(((int)value).ToString());
     }
 }

@@ -22,14 +22,14 @@ public class Ball : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
         _rb.velocity = direction.normalized * (speed + speedBoost);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);

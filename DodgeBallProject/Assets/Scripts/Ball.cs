@@ -8,11 +8,12 @@ public class Ball : MonoBehaviour
 
     public List<int> speedIncrease;
     public List<int> damageIncrease;
+    public List<int> bumpForce;
     public int stateIndex = 0;
 
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
-
+    private bool canBumpPlayer = true;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -27,17 +28,7 @@ public class Ball : MonoBehaviour
     {
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
 
-        //Sécurités pour pas etre Out of Bounds
-        if(stateIndex < 0)
-        {
-            stateIndex = 0;
-        }
-
-        if(stateIndex > 9)
-        {
-            stateIndex = 9;
-        }
-
+        direction.y = 0;
     }
     private void LateUpdate()
     {
@@ -64,10 +55,22 @@ public class Ball : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")&& canBumpPlayer)
         {
+            Debug.Log("Collide Player");
+            collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex]);
+            direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             stateIndex--;
+            stateIndex = Mathf.Clamp(stateIndex, 0, 9);
+            StartCoroutine(CanBumpPlayerCoroutine());
         }
+    }
+
+    IEnumerator CanBumpPlayerCoroutine()
+    {
+        canBumpPlayer = false;
+        yield return new WaitForSeconds(0.5f);
+        canBumpPlayer = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,8 +84,9 @@ public class Ball : MonoBehaviour
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
             stateIndex++;
+            stateIndex = Mathf.Clamp(stateIndex, 0, 9);
         }
-        if(other.CompareTag("KillBall"))
+        if (other.CompareTag("KillBall"))
         {
             GameManager.Instance.LaunchBall();
             Destroy(this.gameObject);

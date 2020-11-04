@@ -37,6 +37,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLaunchTimer(float value)
     {
-        launchTimer.SetText(((int)value).ToString());
+        launchTimer.SetText((((int)value)-1).ToString());
     }
 }

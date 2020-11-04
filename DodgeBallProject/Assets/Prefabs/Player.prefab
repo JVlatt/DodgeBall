@@ -705,6 +705,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
+      propertyPath: OnlyDeactivate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 4

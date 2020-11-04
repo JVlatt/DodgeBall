@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
     private int hp;
 
     public GameObject hitVFX;
-    public Slider healthBar;
+    private Slider healthBar;
     private Animation animBackground;
     private Animation animFill;
 
@@ -17,6 +17,7 @@ public class Goal : MonoBehaviour
     {
         hp = maxHp;
         GameManager.Instance.goals.Add(this);
+        healthBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
         animBackground = healthBar.transform.GetChild(0).GetComponent<Animation>();
         animFill = healthBar.transform.GetChild(1).GetChild(0).GetComponent<Animation>();
     }

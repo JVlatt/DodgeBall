@@ -6,6 +6,9 @@ public class Goal : MonoBehaviour
 {
     public int maxHp = 5;
     private int hp;
+
+    public GameObject hitVFX;
+
     void Start()
     {
         hp = maxHp;
@@ -31,6 +34,17 @@ public class Goal : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Debug.Log("hit");
+            var pos = collision.transform;
+            var vfx = Instantiate(hitVFX);
+            vfx.transform.position = pos.position;
         }
     }
 }

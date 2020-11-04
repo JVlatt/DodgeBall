@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+/*
 using UnityEditor;
 using UnityEditor.Animations;
-
+*/
 public class Recorder : MonoBehaviour
 {
+    /*
     private AnimationClip clip1;
     private Animation m_player;
     public float clipDuration;
@@ -57,4 +59,5 @@ public class Recorder : MonoBehaviour
         m_player["record1"].time = m_player["record1"].length - 5.0f;
         m_player.Play("record1");
     }
+    */
 }

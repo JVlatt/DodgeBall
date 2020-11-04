@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.XR.WSA.Input;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -81,8 +79,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator ScoringCoroutine()
     {
         state = GAME_STATE.FREEZE;
-        recorder.PlayRecordClip();
-        yield return new WaitForSeconds(6.0f);
+        //recorder.PlayRecordClip();
+        yield return new WaitForSeconds(2.0f);
         Reset();
         StartCoroutine(WaitForSecondBall());
         state = GAME_STATE.PLAY;
@@ -99,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void LaunchBall()
     {
         GameObject instantiatedBall = Instantiate(_ballPrefab, spawnBall.transform.position, Quaternion.identity, recorder.transform);
-        recorder.m_Recorder.BindComponentsOfType<Transform>(recorder.gameObject, true);
+        //recorder.m_Recorder.BindComponentsOfType<Transform>(recorder.gameObject, true);
         instantiatedBall.GetComponent<Ball>().direction = new Vector3(1, 0, 0);
     }
 

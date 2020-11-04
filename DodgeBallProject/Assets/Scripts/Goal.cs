@@ -26,10 +26,10 @@ public class Goal : MonoBehaviour
         switch (hp)
         {
             case 1:
-                GameManager.Instance.recorder.StartRecord();
+                //GameManager.Instance.recorder.StartRecord();
                 break;
             case 0:
-                GameManager.Instance.recorder.StopRecord();
+                //GameManager.Instance.recorder.StopRecord();
                 GameManager.Instance.AddPoint(gameObject.name);
                 break;
             default:

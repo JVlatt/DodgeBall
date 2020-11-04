@@ -32,6 +32,7 @@ public class PlayerEntity : MonoBehaviour
     public Transform ballPivot;
     public Transform launchPoint;
     public ParticleSystem moveParticle;
+    public ParticleSystem catchBallParticle;
     private Vector3 spawnPoint;
 
     [Header("Respawn")]
@@ -241,6 +242,7 @@ public class PlayerEntity : MonoBehaviour
     }
     public void Catch(Ball ball)
     {
+        catchBallParticle.Play();
         playerBall = ball;
         playerBall.direction = Vector3.zero;
     }

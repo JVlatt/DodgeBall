@@ -13052,7 +13052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _dashForce
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: turnSpeed

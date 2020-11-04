@@ -256,10 +256,12 @@ public class PlayerEntity : MonoBehaviour
     {
         if (_dashClock > 0) yield break;
 
+        stopMove = true;
         _dashClock = _dashCooldown;
-        rb.AddForce(_moveDir * _dashForce, ForceMode.VelocityChange);
+        _velocity = _moveDir * _dashForce;
         yield return new WaitForSeconds(_dashDuration);
-        rb.velocity = Vector3.zero;
+        _velocity = Vector3.zero;
+        stopMove = false;
     }
 
     public void Reset()

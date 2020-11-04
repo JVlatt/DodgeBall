@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         recorder.PlayRecordClip();
         yield return new WaitForSeconds(6.0f);
         Reset();
+        StartCoroutine(WaitForSecondBall());
         state = GAME_STATE.PLAY;
     }
     public void Reset()

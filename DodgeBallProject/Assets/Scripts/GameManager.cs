@@ -94,12 +94,16 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.launchTimerHolder.SetActive(true);
                 break;
             case GAME_STATE.FREEZE:
+                UIManager.Instance.leftPoints.gameObject.SetActive(true);
+                UIManager.Instance.rightPoints.gameObject.SetActive(true);
                 Reset();
                 break;
             case GAME_STATE.PLAY:
                 LaunchBall();
                 StartCoroutine(WaitForSecondBall());
                 UIManager.Instance.launchTimerHolder.SetActive(false);
+                UIManager.Instance.leftPoints.gameObject.SetActive(false);
+                UIManager.Instance.rightPoints.gameObject.SetActive(false);
                 break;
             case GAME_STATE.END:
                 break;

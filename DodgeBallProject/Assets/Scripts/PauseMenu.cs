@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
-    public Text countdown;
+    private Text countdown;
 
     void Start()
     {
@@ -71,7 +71,14 @@ public class PauseMenu : MonoBehaviour
         while (nTime >= 0f)
         {
             nTime -= Time.unscaledDeltaTime;
-            countdown.text = nTime.ToString("F0");
+            if(nTime > 0.5f)
+            {
+                countdown.text = nTime.ToString("F0");
+            }
+            else
+            {
+                countdown.text = "Go !";
+            }
             yield return null;
         }
 

@@ -886,10 +886,10 @@ MonoBehaviour:
   m_CancelButton: UICancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0
-  m_allowMouseInput: 1
-  m_allowMouseInputIfTouchSupported: 1
-  m_allowTouchInput: 1
-  m_deselectIfBackgroundClicked: 1
+  m_allowMouseInput: 0
+  m_allowMouseInputIfTouchSupported: 0
+  m_allowTouchInput: 0
+  m_deselectIfBackgroundClicked: 0
   m_deselectBeforeSelecting: 1
   m_ForceModuleActive: 0
 --- !u!1 &3448113335422004091

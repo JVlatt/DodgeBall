@@ -266,4 +266,18 @@ public class PlayerEntity : MonoBehaviour
     {
         transform.position = spawnPoint;
     }
+
+    public void Bump(Vector3 dir, float bumpForce)
+    {
+        StartCoroutine(BumpCoroutine(dir, bumpForce));
+    }
+
+    IEnumerator BumpCoroutine(Vector3 dir, float bumpForce)
+    {
+        stopMove = true;
+        _velocity = dir * bumpForce;
+        yield return new WaitForSeconds(0.5f);
+        _velocity = Vector3.zero;
+        stopMove = false;
+    }
 }

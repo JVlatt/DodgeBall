@@ -445,6 +445,7 @@ MonoBehaviour:
   playerBall: {fileID: 0}
   ballPivot: {fileID: 99377401884414038}
   launchPoint: {fileID: 6776797119971171825}
+  indic: {fileID: 8082699542332292536}
   moveParticle: {fileID: 4074572932047323114}
   catchBallParticle: {fileID: 7119025854673584163}
   waitForSpawn: 3
@@ -585,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1327839737159414166
 Transform:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class PlayerEntity : MonoBehaviour
     private GameObject modelObj;
     public Transform ballPivot;
     public Transform launchPoint;
+    public GameObject indic;
     public ParticleSystem moveParticle;
     public ParticleSystem catchBallParticle;
     private Vector3 spawnPoint;
@@ -161,6 +162,15 @@ public class PlayerEntity : MonoBehaviour
             {
                 _orientDir = _velocity.normalized;
             }
+
+        if(rightAxisTouch && playerBall)
+        {
+            indic.SetActive(true);
+        }
+        else
+        {
+            indic.SetActive(false);
+        }
     }
     #endregion
 

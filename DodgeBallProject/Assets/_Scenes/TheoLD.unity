@@ -13064,6 +13064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8082699542332292536, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
 --- !u!1 &310562730
@@ -93223,7 +93227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504402c95b116da49be235911c3a4734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHp: 100
   hitVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
 --- !u!1 &2090273423
 GameObject:
@@ -94199,7 +94203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504402c95b116da49be235911c3a4734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHp: 100
   hitVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
 --- !u!1 &2107197611
 GameObject:

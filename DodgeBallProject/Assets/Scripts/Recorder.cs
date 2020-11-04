@@ -16,10 +16,11 @@ public class Recorder : MonoBehaviour
     private bool isRecording = false;
     private bool recordA = true;
     private bool doubleRecord = false;
-    void Start()
+    void Awake()
     {
         // Create recorder and record the script GameObject.
         clip1 = new AnimationClip();
+        clip1.legacy = true;
         m_Recorder = new GameObjectRecorder(gameObject);
         m_player = GetComponent<Animation>();
         // Bind all the Transforms on the GameObject and all its children.
@@ -51,6 +52,7 @@ public class Recorder : MonoBehaviour
     }
     public void PlayRecordClip()
     {
+        Debug.Log("Clip Duration : " + clip1.length);
         m_player.AddClip(clip1, "record1");
         m_player["record1"].time = m_player["record1"].length - 5.0f;
         m_player.Play("record1");

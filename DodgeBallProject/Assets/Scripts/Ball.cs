@@ -23,12 +23,14 @@ public class Ball : MonoBehaviour
     private void LateUpdate()
     {
         if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
+        if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
         _rb.velocity = direction.normalized * (speed + speedBoost);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Obstacle"))
+        if (GameManager.Instance.state == GameManager.GAME_STATE.FREEZE) return;
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
         }
@@ -36,6 +38,7 @@ public class Ball : MonoBehaviour
         {
             collision.gameObject.GetComponent<Goal>().Hurt();
             GameManager.Instance.LaunchBall();
+            GameManager.Instance.balls.Remove(this);
             Destroy(this.gameObject);
         }
     }
@@ -52,6 +55,11 @@ public class Ball : MonoBehaviour
             _rb.isKinematic = true;
             if(speed + speedBoost <= maxSpeed)
                 speedBoost += 7.5f;
+        }
+        if(other.CompareTag("KillBall"))
+        {
+            GameManager.Instance.LaunchBall();
+            Destroy(this.gameObject);
         }
     }
 }

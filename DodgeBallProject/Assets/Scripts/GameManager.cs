@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         state = GAME_STATE.FREEZE;
         recorder.PlayRecordClip();
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(6.0f);
         Reset();
         state = GAME_STATE.PLAY;
     }
@@ -79,9 +79,7 @@ public class GameManager : MonoBehaviour
             p.Reset();
         foreach (Goal g in goals)
             g.Reset();
-        foreach (Ball b in balls)
-            Destroy(b.gameObject);
-
+        balls.Clear();
         LaunchBall();
     }
     public void LaunchBall()

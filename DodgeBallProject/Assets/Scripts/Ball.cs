@@ -52,6 +52,11 @@ public class Ball : MonoBehaviour
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
         }
+        if (collision.gameObject.CompareTag("Destructible"))
+        {
+            direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+            collision.gameObject.GetComponent<Destructible>().Hurt();
+        }
         if (collision.gameObject.CompareTag("Goal"))
         {
             collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
@@ -59,7 +64,7 @@ public class Ball : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Player") && !_rb.isKinematic)
+        if (collision.gameObject.CompareTag("Player"))
         {
             stateIndex--;
         }

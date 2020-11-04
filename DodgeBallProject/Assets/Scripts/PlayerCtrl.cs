@@ -42,6 +42,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             Vector3 moveDir = entity.rb.velocity;
             moveDir.Normalize();
+            moveDir.y = -50;
             entity.Move(moveDir);
         }
     }

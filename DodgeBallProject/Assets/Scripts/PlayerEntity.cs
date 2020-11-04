@@ -182,6 +182,11 @@ public class PlayerEntity : MonoBehaviour
             waitForSpawn -= Time.deltaTime;
             if(waitForSpawn <= 0)
             {
+                if (playerBall != null)
+                {
+                    GameManager.Instance.balls.Remove(playerBall);
+                    GameManager.Instance.LaunchBall();
+                }
                 respawnCooldown -= Time.deltaTime;
             }
             Respawn();
@@ -190,6 +195,7 @@ public class PlayerEntity : MonoBehaviour
 
     private void Respawn()
     {
+        
         if(waitForSpawn <= 0)
         {
             rb.isKinematic = true;

@@ -24,6 +24,9 @@ public class Goal : MonoBehaviour
     {
         hp -= damageIncrease;
 
+        if (hp < 0)
+            hp = 0;
+
         if(hp > 0)
             GameManager.Instance.LaunchBall();
         switch (hp)

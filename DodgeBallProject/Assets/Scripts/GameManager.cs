@@ -104,10 +104,10 @@ public class GameManager : MonoBehaviour
         switch (teamName)
         {
             case "left":
-                leftPoints++;
+                rightPoints++;
                 break;
             case "right":
-                rightPoints++;
+                leftPoints++;
                 break;
             default:
                 break;

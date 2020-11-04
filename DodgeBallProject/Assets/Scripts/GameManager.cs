@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.XR.WSA.Input;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,7 +46,19 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         LaunchBall();
+        StartCoroutine(WaitForSecondBall());
     }
+
+    private void Update()
+    {
+        if(leftPoints == 2 || rightPoints == 2)
+        {
+            Destroy(UIManager.Instance.gameObject);
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
     public void AddPoint(string teamName)
     {
         switch (teamName)
@@ -87,5 +100,12 @@ public class GameManager : MonoBehaviour
         GameObject instantiatedBall = Instantiate(_ballPrefab, spawnBall.transform.position, Quaternion.identity, recorder.transform);
         recorder.m_Recorder.BindComponentsOfType<Transform>(recorder.gameObject, true);
         instantiatedBall.GetComponent<Ball>().direction = new Vector3(1, 0, 0);
+    }
+
+    IEnumerator WaitForSecondBall()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject instantiatedBall2 = Instantiate(_ballPrefab, spawnBall.transform.position, Quaternion.identity, recorder.transform);
+        instantiatedBall2.GetComponent<Ball>().direction = new Vector3(-1, 0, 0);
     }
 }

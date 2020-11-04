@@ -37,6 +37,13 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLaunchTimer(float value)
     {
-        launchTimer.SetText((((int)value)-1).ToString());
+        if(value > 0.5f)
+        {
+            launchTimer.text = value.ToString("F0");
+        }
+        else
+        {
+            launchTimer.SetText("Go !", true);
+        }
     }
 }

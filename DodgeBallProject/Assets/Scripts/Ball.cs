@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour
             collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex]);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             stateIndex--;
-            stateIndex = Mathf.Clamp(stateIndex, 0, 9);
+            stateIndex = Mathf.Clamp(stateIndex, 0, 3);
             StartCoroutine(CanBumpPlayerCoroutine());
         }
     }
@@ -92,7 +92,7 @@ public class Ball : MonoBehaviour
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
             stateIndex++;
-            stateIndex = Mathf.Clamp(stateIndex, 0, 9);
+            stateIndex = Mathf.Clamp(stateIndex, 0, 3);
         }
         if (other.CompareTag("KillBall"))
         {

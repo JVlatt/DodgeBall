@@ -126,9 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0, z: -1.5}
-  speedIncrease: 140000001b0000002100000028000000
+  speedIncrease: 0f0000001e0000002800000032000000
   damageIncrease: 0a0000000f0000001400000019000000
-  bumpForce: 0300000006000000090000000c000000
+  bumpForce: 0200000005000000080000000c000000
   stateIndex: 20
   hitPlayerVFX: {fileID: 5836383419073833382, guid: 449e099f2180ca54da0ce3a66fed23d5, type: 3}
   _rb: {fileID: 0}

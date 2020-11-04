@@ -11,6 +11,8 @@ public class Ball : MonoBehaviour
     public List<int> bumpForce;
     public int stateIndex = 0;
 
+    public GameObject hitPlayerVFX;
+
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
     private bool canBumpPlayer = true;
@@ -58,6 +60,12 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")&& canBumpPlayer)
         {
             Debug.Log("Collide Player");
+
+            var pos = collision.transform;
+            var vfx = Instantiate(hitPlayerVFX);
+            vfx.transform.position = pos.position;
+            vfx.transform.rotation = pos.rotation;
+
             collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex]);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             stateIndex--;

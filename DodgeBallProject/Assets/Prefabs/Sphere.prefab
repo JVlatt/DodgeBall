@@ -130,5 +130,6 @@ MonoBehaviour:
   damageIncrease: 0a0000000f0000001400000019000000
   bumpForce: 0300000006000000090000000c000000
   stateIndex: 20
+  hitPlayerVFX: {fileID: 5836383419073833382, guid: 449e099f2180ca54da0ce3a66fed23d5, type: 3}
   _rb: {fileID: 0}
   _collider: {fileID: 0}

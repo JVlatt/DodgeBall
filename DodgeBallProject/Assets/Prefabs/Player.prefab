@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1
+  pauseCanvas: {fileID: 0}
 --- !u!1 &8033479319395563686
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,10 +433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81c3e3888aa5d4469889a5acc6b8e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12.5
+  moveSpeed: 10
   turnSpeed: 0.3
-  _dashForce: 100
-  _dashDuration: 0.2
+  _dashForce: 35
+  _dashDuration: 0.1
   _dashCooldown: 1
   _holdTime: 0.1
   _maxHoldTime: 5

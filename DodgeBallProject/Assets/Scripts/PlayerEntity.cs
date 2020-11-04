@@ -31,6 +31,7 @@ public class PlayerEntity : MonoBehaviour
     private GameObject modelObj;
     public Transform ballPivot;
     public Transform launchPoint;
+    public ParticleSystem moveParticle;
     private Vector3 spawnPoint;
 
     [Header("Respawn")]
@@ -65,6 +66,7 @@ public class PlayerEntity : MonoBehaviour
         modelObj = this.gameObject;
         _anim = GetComponent<Animator>();
         _anim.SetFloat("CatchDuration", _catchDurationMultiplier);
+        moveParticle.enableEmission = false;
     }
 
     void Start()
@@ -144,8 +146,18 @@ public class PlayerEntity : MonoBehaviour
     private void _UpdateMove()
     {
             _velocity = _moveDir * moveSpeed;
-            
-            if (!rightAxisTouch)
+
+        if(_velocity != Vector3.zero)
+        {
+            moveParticle.enableEmission = true;
+        }
+        else
+        {
+            moveParticle.enableEmission = false;
+        }
+
+
+        if (!rightAxisTouch)
             {
                 _orientDir = _velocity.normalized;
             }

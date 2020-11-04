@@ -10,6 +10,7 @@ TagManager:
   - Catch
   - FxTemporaire
   - Goal
+  - KillBall
   layers:
   - Default
   - TransparentFX

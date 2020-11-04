@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0, z: -1.5}
-  speed: 30
-  maxSpeed: 2
-  speedBoost: 0
+  speedIncrease: 1e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000
+  damageIncrease: 0100000002000000050000000a0000000f000000140000001e000000280000003200000050000000
+  stateIndex: 0
   _rb: {fileID: 0}
   _collider: {fileID: 0}

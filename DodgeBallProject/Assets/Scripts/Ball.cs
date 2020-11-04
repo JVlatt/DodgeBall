@@ -5,11 +5,14 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Vector3 direction;
-    public float speed = 2.0f;
-    public float maxSpeed = 2.0f;
-    public float speedBoost = 0f;
+
+    public List<int> speedIncrease;
+    public List<int> damageIncrease;
+    public int stateIndex = 0;
+
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -18,15 +21,28 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.balls.Add(this);
+        stateIndex = 0;
     }
     public void Update()
     {
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
+
+        //Sécurités pour pas etre Out of Bounds
+        if(stateIndex < 0)
+        {
+            stateIndex = 0;
+        }
+
+        if(stateIndex > 9)
+        {
+            stateIndex = 9;
+        }
+
     }
     private void LateUpdate()
     {
         if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
-        _rb.velocity = direction.normalized * (speed + speedBoost);
+        _rb.velocity = direction.normalized * (speedIncrease[stateIndex]);
     }
     
     private void OnCollisionEnter(Collision collision)
@@ -38,9 +54,14 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Goal"))
         {
-            collision.gameObject.GetComponent<Goal>().Hurt();
+            collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
             GameManager.Instance.balls.Remove(this);
             Destroy(this.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Player") && !_rb.isKinematic)
+        {
+            stateIndex--;
         }
     }
 
@@ -54,8 +75,7 @@ public class Ball : MonoBehaviour
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
-            if(speed + speedBoost <= maxSpeed)
-                speedBoost += 7.5f;
+            stateIndex++;
         }
         if(other.CompareTag("KillBall"))
         {

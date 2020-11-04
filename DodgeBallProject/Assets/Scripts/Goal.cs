@@ -20,9 +20,10 @@ public class Goal : MonoBehaviour
         hp = maxHp;
     }
 
-    public void Hurt()
+    public void Hurt(int damageIncrease)
     {
-        hp--;
+        hp -= damageIncrease;
+
         if(hp > 0)
             GameManager.Instance.LaunchBall();
         switch (hp)

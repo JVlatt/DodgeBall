@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int leftPoints = 0;
     public int rightPoints = 0;
     public float launchTimer = 5.0f;
+    public float launchGameTimer = 15.0f;
     private Transform spawnBall;
     public List<PlayerEntity> players = new List<PlayerEntity>();
     public List<Goal> goals = new List<Goal>();
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]private GameObject _ballPrefab;
     public enum GAME_STATE
     {
-        LAUNCH,
+        LAUNCH_GAME,
+        LAUNCH_ROUND,
         FREEZE,
         PLAY,
         END
@@ -43,14 +45,21 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
-        SwitchState(GAME_STATE.LAUNCH);
+        SwitchState(GAME_STATE.LAUNCH_GAME);
     }
 
     private void Update()
     {
         switch (state)
         {
-            case GAME_STATE.LAUNCH:
+            case GAME_STATE.LAUNCH_GAME:
+                launchGameTimer -= Time.deltaTime;
+                if (launchGameTimer <= 0)
+                {
+                    SwitchState(GAME_STATE.LAUNCH_ROUND);
+                }
+                break;
+            case GAME_STATE.LAUNCH_ROUND:
                 launchTimer -= Time.deltaTime;
                 UIManager.Instance.UpdateLaunchTimer(launchTimer);
                 if(launchTimer <= 0)
@@ -80,7 +89,7 @@ public class GameManager : MonoBehaviour
         state = newState;
         switch (state)
         {
-            case GAME_STATE.LAUNCH:
+            case GAME_STATE.LAUNCH_ROUND:
                 launchTimer = 5.0f;
                 UIManager.Instance.launchTimerHolder.SetActive(true);
                 break;
@@ -121,7 +130,7 @@ public class GameManager : MonoBehaviour
     {
         SwitchState(GAME_STATE.FREEZE);
         yield return new WaitForSeconds(10.0f);
-        SwitchState(GAME_STATE.LAUNCH);
+        SwitchState(GAME_STATE.LAUNCH_ROUND);
     }
     public void Reset()
     {

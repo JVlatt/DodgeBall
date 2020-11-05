@@ -88,16 +88,7 @@ public class TeamSelection : MonoBehaviour
 
         if (hasJoin && player.GetButtonDown("Leave"))
         {
-            pressToJoin.SetActive(true);
-            controllerImage.SetActive(false);
-            controllerImage.transform.position = cursorPosList[1].transform.position;
-            controllerImage.GetComponent<Image>().color = Color.white;
-            cursorPosList.Clear();
-            hasJoin = false;
-            isReady = false;
-            canLeave = true;
-            curTeam = Team.None;
-            cd = cdc;
+            Reset();
         }
 
         if (!hasJoin && canLeave && player.GetButtonDown("Leave") && cd <= 0)
@@ -115,5 +106,19 @@ public class TeamSelection : MonoBehaviour
         {
             controllerImage.transform.position = cursorPosList[0].transform.position;
         }
+    }
+
+    public void Reset()
+    {
+        pressToJoin.SetActive(true);
+        controllerImage.SetActive(false);
+        controllerImage.transform.position = cursorPosList[1].transform.position;
+        controllerImage.GetComponent<Image>().color = Color.white;
+        cursorPosList.Clear();
+        hasJoin = false;
+        isReady = false;
+        canLeave = true;
+        curTeam = Team.None;
+        cd = cdc;
     }
 }

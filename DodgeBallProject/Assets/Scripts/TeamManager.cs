@@ -12,9 +12,9 @@ public class TeamManager : MonoBehaviour
     [HideInInspector]
     public int i = 0;
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<int> blueTeam;
-    [HideInInspector]
+    //[HideInInspector]
     public List<int> redTeam;
     private bool teamsCreated = false;
 
@@ -73,8 +73,25 @@ public class TeamManager : MonoBehaviour
             if (!teamsCreated)
             {
                 CreateTeams();
-                teamLoader.SetActive(true);
-                teamsCreated = true;
+
+                if(redTeam.Count == 0 || blueTeam.Count == 0)
+                {
+                    //reset
+                    launchGame = false;
+                    i = 0;
+                    redTeam.Clear();
+                    blueTeam.Clear();
+
+                    for(int i = 0; i < playerList.Count; i++)
+                    {
+                        playerList[i].Reset();
+                    }
+                }
+                else
+                {
+                    teamLoader.SetActive(true);
+                    teamsCreated = true;
+                }
             }
         }
     }

@@ -73,13 +73,13 @@ public class TeamSelection : MonoBehaviour
         {
             isReady = true;
 
-            if(controllerImage.transform.position == cursorPosList[2].transform.position)
+            if(controllerImage.transform.position.x > cursorPosList[1].transform.position.x)
             {
                 curTeam = Team.Blue;
                 controllerImage.GetComponent<Image>().color = Color.blue;
             }
 
-            if (controllerImage.transform.position == cursorPosList[0].transform.position)
+            if (controllerImage.transform.position.x < cursorPosList[1].transform.position.x)
             {
                 curTeam = Team.Red;
                 controllerImage.GetComponent<Image>().color = Color.red;

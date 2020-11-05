@@ -18,12 +18,13 @@ public class Goal : MonoBehaviour
     private Animation animBackground;
     private Animation animFill;
 
+    private Animator _anim;
     public enum GoalState
     {
-        Full,
+        Full = 0,
         ThreeQuarter,
         Half,
-        OneQuarter,
+        OneQuarter
     }
 
     public GoalState curState;
@@ -36,6 +37,7 @@ public class Goal : MonoBehaviour
         healthBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
         animBackground = healthBar.transform.GetChild(0).GetComponent<Animation>();
         animFill = healthBar.transform.GetChild(1).GetChild(0).GetComponent<Animation>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -48,10 +50,14 @@ public class Goal : MonoBehaviour
         hp = maxHp;
         curState = GoalState.Full;
         destroyVFX.SetActive(false);
-        
         for(int i = 0; i < destroyVFX.transform.childCount; i++)
         {
             destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
+        }
+        if (_anim != null)
+        {
+            _anim.SetInteger("State", 0);
+            _anim.SetTrigger("Reset");
         }
     }
 
@@ -68,28 +74,39 @@ public class Goal : MonoBehaviour
         animBackground.Play();
         animFill.Play();
 
-        if(hp <= 75 && curState == GoalState.Full)
+        if(hp <= maxHp && curState == GoalState.Full)
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             SoundManager.instance.LastCrystalState();
             curState = GoalState.ThreeQuarter;
+            _anim.SetInteger("State", 1);
         }
 
-        if(hp <= 50 && curState == GoalState.ThreeQuarter)
+        if(hp <= (3*maxHp)/4 && curState == GoalState.ThreeQuarter)
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             SoundManager.instance.LastCrystalState();
             curState = GoalState.Half;
+            _anim.SetInteger("State", 2);
         }
 
-        if (hp <= 25 && curState == GoalState.Half)
+        if (hp <= (2 * maxHp) / 4 && curState == GoalState.Half)
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             SoundManager.instance.LastCrystalState();
             curState = GoalState.OneQuarter;
+            _anim.SetInteger("State", 3);
+        }
+
+        if (hp <= maxHp / 4 && curState == GoalState.OneQuarter)
+        {
+            Instantiate(changeStateVFX, this.transform);
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+            SoundManager.instance.LastCrystalState();
+            _anim.SetInteger("State", 4);
         }
 
         if (hp < 0)

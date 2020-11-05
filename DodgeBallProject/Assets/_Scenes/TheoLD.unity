@@ -22430,6 +22430,8 @@ MonoBehaviour:
   players: []
   goals: []
   balls: []
+  redTeam: []
+  blueTeam: []
   _ballPrefab: {fileID: 6485569430750467359, guid: 6dc2c8a913098da409372f27d96b4c51, type: 3}
   state: 0
   recorder: {fileID: 1457752770}
@@ -51085,6 +51087,7 @@ MonoBehaviour:
   rightPoints: {fileID: 1873778889}
   launchTimerHolder: {fileID: 1134359302}
   launchTimer: {fileID: 1875228946}
+  endCanvas: {fileID: 0}
 --- !u!114 &1187645623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95836,6 +95839,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1457752771}
     m_Modifications:
+    - target: {fileID: 562827579388444765, guid: 4ec69b161a9192b4890e59259ab30b29, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5755946137882324588, guid: 4ec69b161a9192b4890e59259ab30b29, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

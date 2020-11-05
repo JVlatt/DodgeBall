@@ -44,6 +44,7 @@ public class Goal : MonoBehaviour
     public void Reset()
     {
         hp = maxHp;
+        curState = GoalState.Full;
     }
 
     public void Hurt(int damageIncrease)
@@ -77,6 +78,7 @@ public class Goal : MonoBehaviour
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+            SoundManager.instance.LastCrystalState();
             curState = GoalState.OneQuarter;
         }
 
@@ -90,6 +92,7 @@ public class Goal : MonoBehaviour
             case 1:
                 break;
             case 0:
+                SoundManager.instance.CrystalBreak();
                 GameManager.Instance.AddPoint(gameObject.name);
                 break;
             default:

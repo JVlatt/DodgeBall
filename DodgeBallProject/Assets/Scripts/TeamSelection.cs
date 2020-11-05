@@ -73,6 +73,7 @@ public class TeamSelection : MonoBehaviour
         if(hasJoin && player.GetButtonDown("Join") && controllerImage.transform.position != cursorPosList[1].transform.position)
         {
             isReady = true;
+            SoundManager.instance.ButtonClick();
 
             if(controllerImage.transform.position.x > cursorPosList[1].transform.position.x)
             {

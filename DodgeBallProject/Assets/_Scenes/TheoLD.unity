@@ -22426,7 +22426,7 @@ MonoBehaviour:
   leftPoints: 0
   rightPoints: 0
   launchTimer: 5
-  launchGameTimer: 0
+  launchGameTimer: 15
   players: []
   goals: []
   balls: []

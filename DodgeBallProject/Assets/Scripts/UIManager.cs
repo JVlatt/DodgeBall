@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.instance.ButtonClick();
         Destroy(UIManager.Instance.gameObject);
-        Destroy(this.gameObject);
+        Destroy(GameManager.Instance);
         SceneManager.LoadScene("MainMenu");
     }
 

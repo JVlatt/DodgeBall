@@ -57,6 +57,15 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Restart()
+    {
+        SoundManager.instance.ButtonClick();
+        Time.timeScale = 1;
+        Destroy(UIManager.Instance.gameObject);
+        Destroy(GameObject.FindObjectOfType<GameManager>().gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Quit()
     {
         Application.Quit();

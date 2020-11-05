@@ -209,11 +209,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0, z: -1.5}
-  speedIncrease: 320000001e0000002800000032000000
+  speedIncrease: 140000001e0000002800000032000000
   damageIncrease: 0a0000000f0000001400000019000000
   bumpForce: 0200000005000000080000000c000000
   stateIndex: 20
   hitPlayerVFX: {fileID: 5836383419073833382, guid: 449e099f2180ca54da0ce3a66fed23d5, type: 3}
+  ballStateVFX: []
   _rb: {fileID: 0}
   _collider: {fileID: 0}
 --- !u!1001 &113803837187472090

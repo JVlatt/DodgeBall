@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public int stateIndex = 0;
 
     public GameObject hitPlayerVFX;
+    [HideInInspector] public List<GameObject> ballStateVFX;
 
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
@@ -25,13 +26,25 @@ public class Ball : MonoBehaviour
     {
         GameManager.Instance.balls.Add(this);
         stateIndex = 0;
+
+        for(int i = 0; i < gameObject.transform.childCount - 2; i++)
+        {
+            ballStateVFX.Add(gameObject.transform.GetChild(i + 2).gameObject);
+        }
+        for(int i = 0; i < ballStateVFX.Count; i++)
+        {
+            ballStateVFX[i].gameObject.SetActive(false);
+        }
     }
     public void Update()
     {
         if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
 
         direction.y = 0;
+
+        UpdateStateVFX();
     }
+
     private void LateUpdate()
     {
         if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
@@ -71,6 +84,37 @@ public class Ball : MonoBehaviour
             stateIndex--;
             stateIndex = Mathf.Clamp(stateIndex, 0, 3);
             StartCoroutine(CanBumpPlayerCoroutine());
+        }
+    }
+
+    void UpdateStateVFX()
+    {
+        if (stateIndex == 0)
+        {
+            ballStateVFX[0].SetActive(false);
+            ballStateVFX[1].SetActive(false);
+            ballStateVFX[2].SetActive(false);
+        }
+
+        if (stateIndex == 1)
+        {
+            ballStateVFX[0].SetActive(true);
+            ballStateVFX[1].SetActive(false);
+            ballStateVFX[2].SetActive(false);
+        }
+
+        if (stateIndex == 2)
+        {
+            ballStateVFX[0].SetActive(true);
+            ballStateVFX[1].SetActive(true);
+            ballStateVFX[2].SetActive(false);
+        }
+
+        if (stateIndex == 3)
+        {
+            ballStateVFX[0].SetActive(true);
+            ballStateVFX[1].SetActive(true);
+            ballStateVFX[2].SetActive(true);
         }
     }
 

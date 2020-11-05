@@ -212,6 +212,119 @@ MonoBehaviour:
   speedIncrease: 140000001e0000002800000032000000
   damageIncrease: 0a0000000f0000001400000019000000
   bumpForce: 0200000005000000080000000c000000
+  trailColors:
+  - serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.5019608}
+    key1: {r: 1, g: 1, b: 1, a: 0.5019608}
+    key2: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    key3: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    key4: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    key5: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    key6: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    key7: {r: 0.3137255, g: 0.21568628, b: 0, a: 0.5019608}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 0, g: 0.15367556, b: 1, a: 0.5019608}
+    key1: {r: 1, g: 1, b: 1, a: 0.5019608}
+    key2: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    key3: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    key4: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    key5: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    key6: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    key7: {r: 0.972549, g: 0.21568628, b: 0, a: 0.5019608}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 0, g: 1, b: 0.062781096, a: 0.5019608}
+    key1: {r: 1, g: 1, b: 1, a: 0.5019608}
+    key2: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    key3: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    key4: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    key5: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    key6: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    key7: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  - serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0.029372692, a: 0.5019608}
+    key1: {r: 1, g: 1, b: 1, a: 0.5019608}
+    key2: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key3: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key4: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key5: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key6: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key7: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   stateIndex: 20
   hitPlayerVFX: {fileID: 5836383419073833382, guid: 449e099f2180ca54da0ce3a66fed23d5, type: 3}
   ballStateVFX: []

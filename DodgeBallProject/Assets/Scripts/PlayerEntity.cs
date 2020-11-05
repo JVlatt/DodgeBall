@@ -41,8 +41,8 @@ public class PlayerEntity : MonoBehaviour
     public float respawnCooldown = 5.0f;
     private float respawnCooldownClock = 0f;
     public GameObject respawnDisplay;
+    public GameObject respawnVFX;
     private GameObject respawnDisplayInstance;
-    private Text respawnText;
     private Image respawnImage;
     private bool respawnDisplayCreated;
 
@@ -213,12 +213,10 @@ public class PlayerEntity : MonoBehaviour
             {
                 respawnDisplayInstance = Instantiate(respawnDisplay);
                 respawnDisplayInstance.transform.position = spawnPoint;
-                respawnText = respawnDisplayInstance.GetComponentInChildren<Text>();
                 respawnImage = respawnDisplayInstance.GetComponentInChildren<Image>();
                 respawnDisplayCreated = true;
             }
 
-            respawnText.text = respawnCooldown.ToString("F1");
             respawnImage.fillAmount = respawnCooldown / respawnCooldownClock;
 
             if (respawnCooldown <= 0)
@@ -227,6 +225,8 @@ public class PlayerEntity : MonoBehaviour
                 this.transform.position = spawnPoint;
                 waitForSpawn = waitForSpawnClock;
                 respawnCooldown = respawnCooldownClock;
+                var vfx = Instantiate(respawnVFX);
+                vfx.transform.position = respawnDisplayInstance.transform.position;
                 Destroy(respawnDisplayInstance);
                 respawnDisplayCreated = false;
             }
@@ -241,6 +241,7 @@ public class PlayerEntity : MonoBehaviour
         playerBall.direction = ballDirection;
         playerBall._collider.enabled = true;
         playerBall._rb.isKinematic = false;
+        playerBall.transform.GetChild(1).gameObject.SetActive(true);
         playerBall = null;
         chargedShoot = false;
         _chargeClock = 0f;
@@ -260,6 +261,7 @@ public class PlayerEntity : MonoBehaviour
         catchBallParticle.Play();
         playerBall = ball;
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);
+        playerBall.transform.GetChild(1).gameObject.SetActive(false);
         playerBall.direction = Vector3.zero;
     }
 

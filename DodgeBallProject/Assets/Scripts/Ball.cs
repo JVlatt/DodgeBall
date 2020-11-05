@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     public List<int> speedIncrease;
     public List<int> damageIncrease;
     public List<int> bumpForce;
+    public List<Gradient> trailColors;
     public int stateIndex = 0;
 
     public GameObject hitPlayerVFX;
@@ -89,6 +90,8 @@ public class Ball : MonoBehaviour
 
     void UpdateStateVFX()
     {
+        this.transform.GetChild(1).GetComponent<TrailRenderer>().colorGradient = trailColors[stateIndex];
+
         if (stateIndex == 0)
         {
             ballStateVFX[0].SetActive(false);

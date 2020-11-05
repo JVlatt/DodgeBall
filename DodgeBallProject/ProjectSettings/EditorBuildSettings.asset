@@ -17,13 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TeamSelection.unity
     guid: 9ad80382c0a9dae478ff841ead4c3c9d
-  - enabled: 1
-    path: Assets/_Scenes/Test.unity
-    guid: c2802bc758601bd4f8c3f1af0d9bd7a0
   - enabled: 0
     path: Assets/_Scenes/MattLD.unity
     guid: c768126c8625bf6409243aefaf921968
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/TheoLD2.unity
     guid: e607fe2d7aa83884ca279fe70ceb731b
   m_configObjects: {}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EZCameraShake;
 
 public class Goal : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Goal : MonoBehaviour
 
     public GameObject hitVFX;
     public GameObject changeStateVFX;
+
     private Slider healthBar;
     private Animation animBackground;
     private Animation animFill;
@@ -60,18 +62,21 @@ public class Goal : MonoBehaviour
         if(hp <= 75 && curState == GoalState.Full)
         {
             Instantiate(changeStateVFX, this.transform);
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             curState = GoalState.ThreeQuarter;
         }
 
         if(hp <= 50 && curState == GoalState.ThreeQuarter)
         {
             Instantiate(changeStateVFX, this.transform);
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             curState = GoalState.Half;
         }
 
         if (hp <= 25 && curState == GoalState.Half)
         {
             Instantiate(changeStateVFX, this.transform);
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             curState = GoalState.OneQuarter;
         }
 

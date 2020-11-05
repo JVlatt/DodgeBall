@@ -112,6 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hitVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  changeStateVFX: {fileID: 3898583497399004146, guid: c1f8a2bbedd7405469490c0716b8f5cf, type: 3}
+  curState: 0
 --- !u!1001 &5417215846278872612
 PrefabInstance:
   m_ObjectHideFlags: 0

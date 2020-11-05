@@ -64227,6 +64227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b4fb4563e58f84ea25bcb4dfb031da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToRecord: []
+  clipDuration: 20
 --- !u!4 &1457752771
 Transform:
   m_ObjectHideFlags: 0
@@ -96012,6 +96014,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8254079504983800784, guid: 972c18bb537083542b19b6b577045c32, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 8254079504983800785, guid: 972c18bb537083542b19b6b577045c32, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.421787

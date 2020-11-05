@@ -9,13 +9,25 @@ public class Goal : MonoBehaviour
     private int hp;
 
     public GameObject hitVFX;
+    public GameObject changeStateVFX;
     private Slider healthBar;
     private Animation animBackground;
     private Animation animFill;
 
+    public enum GoalState
+    {
+        Full,
+        ThreeQuarter,
+        Half,
+        OneQuarter,
+    }
+
+    public GoalState curState;
+
     void Start()
     {
         hp = maxHp;
+        curState = GoalState.Full;
         GameManager.Instance.goals.Add(this);
         healthBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
         animBackground = healthBar.transform.GetChild(0).GetComponent<Animation>();
@@ -44,6 +56,24 @@ public class Goal : MonoBehaviour
 
         animBackground.Play();
         animFill.Play();
+
+        if(hp <= 75 && curState == GoalState.Full)
+        {
+            Instantiate(changeStateVFX, this.transform);
+            curState = GoalState.ThreeQuarter;
+        }
+
+        if(hp <= 50 && curState == GoalState.ThreeQuarter)
+        {
+            Instantiate(changeStateVFX, this.transform);
+            curState = GoalState.Half;
+        }
+
+        if (hp <= 25 && curState == GoalState.Half)
+        {
+            Instantiate(changeStateVFX, this.transform);
+            curState = GoalState.OneQuarter;
+        }
 
         if (hp < 0)
             hp = 0;

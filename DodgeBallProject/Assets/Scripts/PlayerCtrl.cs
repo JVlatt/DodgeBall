@@ -5,21 +5,21 @@ using Rewired;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    [SerializeField]private int playerID = 0;
-    [SerializeField]private Player player;
+    public int playerID = 99;
+    [HideInInspector]public Player player;
 
     public PauseMenu pauseCanvas;
     private PlayerEntity entity;
 
     void Start()
     {
-        player = ReInput.players.GetPlayer(playerID);
         entity = this.gameObject.transform.parent.GetComponent<PlayerEntity>();
         pauseCanvas = GameObject.FindObjectOfType<PauseMenu>();
     }
 
     void Update()
     {
+        if (player == null) return;
         Inputs();
     }
 
@@ -89,5 +89,11 @@ public class PlayerCtrl : MonoBehaviour
                 pauseCanvas.Pause();
             }
         }
+    }
+
+    public void UpdateID(int id)
+    {
+        playerID = id;
+        player = ReInput.players.GetPlayer(playerID);
     }
 }

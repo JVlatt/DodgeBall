@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using Rewired;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class TeamManager : MonoBehaviour
 {
-    [HideInInspector]
     public List<TeamSelection> playerList;
+    List<TeamSelection> copyPlayerList = new List<TeamSelection>();
     [HideInInspector]
     public bool launchGame;
     [HideInInspector]
@@ -24,30 +25,35 @@ public class TeamManager : MonoBehaviour
     public List<GameObject> displayPosList;
 
     public GameObject teamLoader;
+    private List<GameObject> controllers = new List<GameObject>();
+    [SerializeField]private List<int> listIndex;
+    private int nbPlayers = 0;
 
     void Start()
     {
         launchGame = false;
 
-        var controllers = GameObject.Find("Controllers");
+        var controllersHolder = GameObject.Find("Controllers");
         var controllersDisplay = GameObject.Find("Canvas Selection");
-        var nbPlayers = GameObject.FindObjectOfType<NumberOfPlayers>().numberOfPlayers;
+        nbPlayers = GameObject.FindObjectOfType<NumberOfPlayers>().numberOfPlayers;
 
-        if(nbPlayers != null)
+        if(nbPlayers != 0)
         {
             for (int i = 0; i < nbPlayers; i++)
             {
-                controllers.transform.GetChild(i).gameObject.SetActive(true);
+                controllersHolder.transform.GetChild(i).gameObject.SetActive(true);
+                controllers.Add(controllersHolder.transform.GetChild(i).gameObject);
                 controllersDisplay.transform.GetChild(i + 7).gameObject.SetActive(true);
                 displayList.Add(controllersDisplay.transform.GetChild(i + 7).gameObject);
+                listIndex.Add(i);
             }
         }
 
-        for(int i = 0; i < controllers.transform.childCount; i++)
+        for(int i = 0; i < controllersHolder.transform.childCount; i++)
         {
-            if (controllers.transform.GetChild(i).gameObject.activeSelf)
+            if (controllersHolder.transform.GetChild(i).gameObject.activeSelf)
             {
-                playerList.Add(controllers.transform.GetChild(i).GetComponent<TeamSelection>());
+                playerList.Add(controllersHolder.transform.GetChild(i).GetComponent<TeamSelection>());
             }
         }
 
@@ -60,10 +66,27 @@ public class TeamManager : MonoBehaviour
         {
             Display(nbPlayers);
         }
+
+        foreach (TeamSelection t in playerList)
+            copyPlayerList.Add(t);
     }
 
     void Update()
     {
+        for(int i = 0; i < listIndex.Count; i++)
+        {
+            if (ReInput.players.GetPlayer(listIndex[i]).GetButtonDown("Join"))
+            {
+                if(copyPlayerList.Count > 0)
+                {
+                    copyPlayerList[0].player = ReInput.players.GetPlayer(listIndex[i]);
+                    copyPlayerList[0].playerID = listIndex[i];
+                    copyPlayerList.RemoveAt(0);
+                    listIndex.RemoveAt(i);
+                }
+            }
+        }
+
         if (!launchGame)
         {
             PlayerCheck();

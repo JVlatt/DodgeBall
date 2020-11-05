@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerEntity> players = new List<PlayerEntity>();
     public List<Goal> goals = new List<Goal>();
     public List<Ball> balls = new List<Ball>();
+    public List<GameObject> redTeam;
+    public List<GameObject> blueTeam;
     [SerializeField]private GameObject _ballPrefab;
     public enum GAME_STATE
     {
@@ -45,6 +47,18 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        List<int> redTeamIds = FindObjectOfType<TeamLoader>().redTeam;
+        List<int> blueTeamIds = FindObjectOfType<TeamLoader>().blueTeam;
+        for(int i = 0; i < redTeamIds.Count; i++)
+        {
+            redTeam[i].SetActive(true);
+            redTeam[i].GetComponentInChildren<PlayerCtrl>().UpdateID(redTeamIds[i]);
+        }
+        for (int i = 0; i < blueTeamIds.Count; i++)
+        {
+            blueTeam[i].SetActive(true);
+            blueTeam[i].GetComponentInChildren<PlayerCtrl>().UpdateID(blueTeamIds[i]);
+        }
         SwitchState(GAME_STATE.LAUNCH_GAME);
     }
 

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class TeamSelection : MonoBehaviour
 {
     public int playerID = 0;
-    [SerializeField] private Player player;
+    public Player player;
 
     public GameObject playerCanvas;
     [HideInInspector]
@@ -37,12 +37,13 @@ public class TeamSelection : MonoBehaviour
 
     void Start()
     {
-        player = ReInput.players.GetPlayer(playerID);
+        playerID = -1;
         curTeam = Team.None;
     }
 
     void Update()
     {
+        if (player == null) return;
         if(cd > 0)
         {
             cd -= Time.deltaTime;

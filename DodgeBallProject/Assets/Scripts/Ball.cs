@@ -66,7 +66,7 @@ public class Ball : MonoBehaviour
             vfx.transform.position = pos.position;
             vfx.transform.rotation = pos.rotation;
 
-            collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex]);
+            collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex], 0.5f);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             stateIndex--;
             stateIndex = Mathf.Clamp(stateIndex, 0, 3);

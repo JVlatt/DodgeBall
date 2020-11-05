@@ -259,6 +259,7 @@ public class PlayerEntity : MonoBehaviour
     {
         catchBallParticle.Play();
         playerBall = ball;
+        Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);
         playerBall.direction = Vector3.zero;
     }
 
@@ -279,16 +280,16 @@ public class PlayerEntity : MonoBehaviour
         transform.position = spawnPoint;
     }
 
-    public void Bump(Vector3 dir, float bumpForce)
+    public void Bump(Vector3 dir, float bumpForce, float duration)
     {
-        StartCoroutine(BumpCoroutine(dir, bumpForce));
+        StartCoroutine(BumpCoroutine(dir, bumpForce, duration));
     }
 
-    IEnumerator BumpCoroutine(Vector3 dir, float bumpForce)
+    IEnumerator BumpCoroutine(Vector3 dir, float bumpForce, float duration)
     {
         stopMove = true;
         _velocity = dir * bumpForce;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(duration);
         _velocity = Vector3.zero;
         stopMove = false;
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         LAUNCH_GAME,
         LAUNCH_ROUND,
+        END_ROUND,
         FREEZE,
         PLAY,
         END
@@ -81,6 +83,8 @@ public class GameManager : MonoBehaviour
                     SwitchState(GAME_STATE.PLAY);
                 }
                 break;
+            case GAME_STATE.END_ROUND:
+                break;
             case GAME_STATE.FREEZE:
                 break;
             case GAME_STATE.PLAY:
@@ -89,12 +93,6 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 break;
-        }
-        if(leftPoints == 2 || rightPoints == 2)
-        {
-            Destroy(UIManager.Instance.gameObject);
-            Destroy(this.gameObject);
-            SceneManager.LoadScene("MainMenu");
         }
     }
 
@@ -120,6 +118,19 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.rightPoints.gameObject.SetActive(false);
                 break;
             case GAME_STATE.END:
+                UIManager.Instance.endCanvas.SetActive(true);
+                UIManager.Instance.endCanvas.transform.GetChild(0).gameObject.SetActive(true);
+
+                if(leftPoints == 2)
+                {
+                    UIManager.Instance.endCanvas.GetComponentInChildren<Text>().text = "Red Team wins !";
+                    UIManager.Instance.endCanvas.GetComponentInChildren<Text>().color = Color.red;
+                }
+                else
+                {
+                    UIManager.Instance.endCanvas.GetComponentInChildren<Text>().text = "Blue Team wins !";
+                    UIManager.Instance.endCanvas.GetComponentInChildren<Text>().color = Color.blue;
+                }
                 break;
             default:
                 break;
@@ -146,9 +157,19 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator ScoringCoroutine()
     {
+        SwitchState(GAME_STATE.END_ROUND);
+        yield return new WaitForSeconds(10.0f);
         SwitchState(GAME_STATE.FREEZE);
         yield return new WaitForSeconds(10.0f);
-        SwitchState(GAME_STATE.LAUNCH_ROUND);
+
+        if (leftPoints == 2 || rightPoints == 2)
+        {
+            SwitchState(GAME_STATE.END);
+        }
+        else
+        {
+            SwitchState(GAME_STATE.LAUNCH_ROUND);
+        }
     }
     public void Reset()
     {

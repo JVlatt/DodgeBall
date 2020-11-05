@@ -11,6 +11,8 @@ public class Goal : MonoBehaviour
 
     public GameObject hitVFX;
     public GameObject changeStateVFX;
+    public GameObject destroyVFX;
+    public GameObject explosionCristalVFX;
 
     private Slider healthBar;
     private Animation animBackground;
@@ -45,6 +47,12 @@ public class Goal : MonoBehaviour
     {
         hp = maxHp;
         curState = GoalState.Full;
+        destroyVFX.SetActive(false);
+        
+        for(int i = 0; i < destroyVFX.transform.childCount; i++)
+        {
+            destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
+        }
     }
 
     public void Hurt(int damageIncrease)
@@ -64,6 +72,7 @@ public class Goal : MonoBehaviour
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+            SoundManager.instance.LastCrystalState();
             curState = GoalState.ThreeQuarter;
         }
 
@@ -71,6 +80,7 @@ public class Goal : MonoBehaviour
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+            SoundManager.instance.LastCrystalState();
             curState = GoalState.Half;
         }
 
@@ -92,6 +102,11 @@ public class Goal : MonoBehaviour
             case 1:
                 break;
             case 0:
+                CameraShaker.Instance.ShakeOnce(10f, 10f, 0.1f, 1f);
+                var tmp = Instantiate(explosionCristalVFX);
+                tmp.transform.position = this.transform.position;
+                destroyVFX.SetActive(true);
+                StartCoroutine(SlowMo());
                 SoundManager.instance.CrystalBreak();
                 GameManager.Instance.AddPoint(gameObject.name);
                 break;
@@ -109,5 +124,18 @@ public class Goal : MonoBehaviour
             var vfx = Instantiate(hitVFX);
             vfx.transform.position = pos.position;
         }
+    }
+
+    public IEnumerator SlowMo()
+    {
+        float nTime = 1f;
+        while (nTime >= 0f)
+        {
+            nTime -= Time.unscaledDeltaTime;
+            Time.timeScale = 0.25f;
+            yield return null;
+        }
+
+        Time.timeScale = 1f;
     }
 }

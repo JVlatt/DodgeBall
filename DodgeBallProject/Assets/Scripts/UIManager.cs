@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
     public Text rightPoints;
     public GameObject launchTimerHolder;
     public TextMeshProUGUI launchTimer;
+    public GameObject endCanvas;
 
     void Awake()
     {
@@ -45,5 +47,18 @@ public class UIManager : MonoBehaviour
         {
             launchTimer.SetText("Go !", true);
         }
+    }
+
+    public void ReturnToMenu()
+    {
+        SoundManager.instance.ButtonClick();
+        Destroy(UIManager.Instance.gameObject);
+        Destroy(this.gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

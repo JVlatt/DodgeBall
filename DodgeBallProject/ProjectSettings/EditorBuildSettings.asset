@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/MattLD.unity
     guid: c768126c8625bf6409243aefaf921968
+  - enabled: 1
+    path: Assets/_Scenes/TheoLD2.unity
+    guid: e607fe2d7aa83884ca279fe70ceb731b
   m_configObjects: {}

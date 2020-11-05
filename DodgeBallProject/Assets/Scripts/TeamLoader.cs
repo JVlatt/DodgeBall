@@ -15,7 +15,7 @@ public class TeamLoader : MonoBehaviour
             redTeam = GameObject.FindObjectOfType<TeamManager>().redTeam;
             blueTeam = GameObject.FindObjectOfType<TeamManager>().blueTeam;
             DontDestroyOnLoad(this);
-            SceneManager.LoadScene("TheoLD2");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

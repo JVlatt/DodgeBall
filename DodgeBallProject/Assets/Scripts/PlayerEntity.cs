@@ -307,6 +307,8 @@ public class PlayerEntity : MonoBehaviour
     {
         _velocity = Vector3.zero;
         transform.position = spawnPoint;
+        if (playerBall != null)
+            playerBall = null;
     }
 
     public void Bump(Vector3 dir, float bumpForce, float duration)

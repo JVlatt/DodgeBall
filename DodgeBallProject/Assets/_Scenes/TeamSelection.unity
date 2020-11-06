@@ -870,7 +870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3073,7 +3073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3289,7 +3289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2f54114ed3abe4385c566aacd9ba71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80854883d6180a24e800420f92156e78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3614,6 +3614,7 @@ GameObject:
   - component: {fileID: 1903530544}
   - component: {fileID: 1903530546}
   - component: {fileID: 1903530545}
+  - component: {fileID: 1903530547}
   m_Layer: 5
   m_Name: Main Text
   m_TagString: Untagged
@@ -3653,7 +3654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.91764706, g: 0.69411767, b: 0.27450982, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3682,6 +3683,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903530543}
   m_CullTransparentMesh: 0
+--- !u!114 &1903530547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903530543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.7490196}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1912491880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,6 +3820,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2467625050203659517, guid: 7d6e7db13565ee746942047c890cbd53, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 60d43ed1a17f8c84dbefdb3ba21e7f9b, type: 3}
+    - target: {fileID: 2467625050203659517, guid: 7d6e7db13565ee746942047c890cbd53, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2467625050861242759, guid: 7d6e7db13565ee746942047c890cbd53, type: 3}
       propertyPath: m_Name
       value: SoundManager

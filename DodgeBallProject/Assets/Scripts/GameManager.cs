@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     public void Start()
     {
+        SoundManager.instance.Ambiance();
         List<int> redTeamIds = FindObjectOfType<TeamLoader>().redTeam;
         List<int> blueTeamIds = FindObjectOfType<TeamLoader>().blueTeam;
         for(int i = 0; i < redTeamIds.Count; i++)
@@ -122,11 +123,13 @@ public class GameManager : MonoBehaviour
 
                 if(leftPoints == 3)
                 {
+                    SoundManager.instance.WinGame();
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().text = "Red Team wins !";
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().color = Color.red;
                 }
                 else
                 {
+                    SoundManager.instance.WinGame();
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().text = "Blue Team wins !";
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().color = Color.blue;
                 }
@@ -157,6 +160,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator ScoringCoroutine()
     {
         SwitchState(GAME_STATE.END_ROUND);
+        SoundManager.instance.ScorePoint();
         yield return new WaitForSeconds(2.0f);
         SwitchState(GAME_STATE.FREEZE);
         yield return new WaitForSeconds(5.0f);

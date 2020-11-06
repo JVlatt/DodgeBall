@@ -9,10 +9,19 @@ public class SoundManager : MonoBehaviour
     [Header("General Sounds")]
     public AudioSource main_theme;
     public AudioSource button_click;
+    public AudioSource selectionEquipe;
+
+   // public AudioSource dash;
+
+    [Header("Events Sounds")]
+    public AudioSource scorePoint;
+    public AudioSource lastCrystalState;
+    public AudioSource crystalTouch;
+    public AudioSource crystalBreak;
+    public AudioSource winGame;
 
     [Header("Environement Sounds")]
-    public AudioSource lastCrystalState;
-    public AudioSource crystalBreak;
+    public AudioSource ambiance;
 
     private void Awake()
     {
@@ -35,14 +44,39 @@ public class SoundManager : MonoBehaviour
         button_click.Play();
     }
 
-    //Environement
+    public void SelectionEquipe()
+    {
+        selectionEquipe.Play();
+    }
+
+    //Events
+    public void ScorePoint()
+    {
+        scorePoint.Play();
+    }
     public void LastCrystalState()
     {
         lastCrystalState.Play();
     }
 
+    public void CrystalTouch()
+    {
+        crystalTouch.Play();
+    }
+
     public void CrystalBreak()
     {
         crystalBreak.Play();
+    }
+
+    public void WinGame()
+    {
+        winGame.Play();
+    }
+
+    //Evironement
+    public void Ambiance()
+    {
+        ambiance.Play();
     }
 }

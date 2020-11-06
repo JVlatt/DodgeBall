@@ -208,8 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 23626576}
   - component: {fileID: 23626579}
-  - component: {fileID: 23626578}
   - component: {fileID: 23626577}
+  - component: {fileID: 23626578}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -226,7 +226,7 @@ RectTransform:
   m_GameObject: {fileID: 23626575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1583697, y: 0.1583697, z: 0.1583697}
   m_Children: []
   m_Father: {fileID: 54108228}
   m_RootOrder: 0
@@ -234,7 +234,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &23626577
 Animation:
@@ -245,9 +245,10 @@ Animation:
   m_GameObject: {fileID: 23626575}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -261,31 +262,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 23626575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &23626579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -404,8 +401,8 @@ GameObject:
   m_Component:
   - component: {fileID: 128114058}
   - component: {fileID: 128114061}
-  - component: {fileID: 128114060}
   - component: {fileID: 128114059}
+  - component: {fileID: 128114060}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -422,7 +419,7 @@ RectTransform:
   m_GameObject: {fileID: 128114057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15836968, y: 0.15836968, z: 0.15836968}
   m_Children: []
   m_Father: {fileID: 1247251682}
   m_RootOrder: 0
@@ -430,7 +427,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &128114059
 Animation:
@@ -441,9 +438,10 @@ Animation:
   m_GameObject: {fileID: 128114057}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -457,31 +455,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 128114057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &128114061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2032,8 +2026,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1024675840}
   - component: {fileID: 1024675843}
-  - component: {fileID: 1024675842}
   - component: {fileID: 1024675841}
+  - component: {fileID: 1024675842}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -2050,7 +2044,7 @@ RectTransform:
   m_GameObject: {fileID: 1024675839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1583697, y: 0.1583697, z: 0.1583697}
   m_Children: []
   m_Father: {fileID: 833983117}
   m_RootOrder: 0
@@ -2058,7 +2052,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1024675841
 Animation:
@@ -2069,9 +2063,10 @@ Animation:
   m_GameObject: {fileID: 1024675839}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2085,31 +2080,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024675839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1024675843
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2128,8 +2119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1056683807}
   - component: {fileID: 1056683810}
-  - component: {fileID: 1056683809}
   - component: {fileID: 1056683808}
+  - component: {fileID: 1056683809}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -2146,7 +2137,7 @@ RectTransform:
   m_GameObject: {fileID: 1056683806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1583697, y: 0.1583697, z: 0.1583697}
   m_Children: []
   m_Father: {fileID: 1614972219}
   m_RootOrder: 0
@@ -2154,7 +2145,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1056683808
 Animation:
@@ -2165,9 +2156,10 @@ Animation:
   m_GameObject: {fileID: 1056683806}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2181,31 +2173,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1056683806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1056683810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2619,8 +2607,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1397331167}
   - component: {fileID: 1397331170}
-  - component: {fileID: 1397331169}
   - component: {fileID: 1397331168}
+  - component: {fileID: 1397331169}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -2637,7 +2625,7 @@ RectTransform:
   m_GameObject: {fileID: 1397331166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1583697, y: 0.1583697, z: 0.1583697}
   m_Children: []
   m_Father: {fileID: 1178618430}
   m_RootOrder: 0
@@ -2645,7 +2633,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1397331168
 Animation:
@@ -2656,9 +2644,10 @@ Animation:
   m_GameObject: {fileID: 1397331166}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2672,31 +2661,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397331166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1397331170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2895,8 +2880,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1545714931}
   - component: {fileID: 1545714934}
-  - component: {fileID: 1545714933}
   - component: {fileID: 1545714932}
+  - component: {fileID: 1545714933}
   m_Layer: 5
   m_Name: Press To Join Text
   m_TagString: Untagged
@@ -2913,7 +2898,7 @@ RectTransform:
   m_GameObject: {fileID: 1545714930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1583697, y: 0.1583697, z: 0.1583697}
   m_Children: []
   m_Father: {fileID: 486014987}
   m_RootOrder: 0
@@ -2921,7 +2906,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 1313, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1545714932
 Animation:
@@ -2932,9 +2917,10 @@ Animation:
   m_GameObject: {fileID: 1545714930}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  m_Animation: {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aaf5a040ec43a8841971c850058369e7, type: 2}
+  - {fileID: 7400000, guid: 893ebe7be5f13134fbc3e2fd74537495, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2948,31 +2934,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545714930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 80a9a9fec6ddf28468af7a9d89bda531, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join
+  m_Sprite: {fileID: 21300000, guid: 48dbbeb440815674da55ca8db82c04b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1545714934
 CanvasRenderer:
   m_ObjectHideFlags: 0

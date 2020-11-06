@@ -67,6 +67,9 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
+            var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
+            tmp.transform.position = this.transform.position;
+            tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             Reset();
         }
 

@@ -135,17 +135,6 @@ public class Goal : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            Debug.Log("hit");
-            var pos = collision.transform;
-            var vfx = Instantiate(hitVFX);
-            vfx.transform.position = pos.position;
-        }
-    }
-
     public IEnumerator SlowMo()
     {
         float nTime = 1f;

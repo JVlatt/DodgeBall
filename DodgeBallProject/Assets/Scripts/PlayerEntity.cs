@@ -34,7 +34,6 @@ public class PlayerEntity : MonoBehaviour
     public ParticleSystem moveParticle;
     public ParticleSystem catchBallParticle;
     private Vector3 spawnPoint;
-    private AudioSource walkSound;
 
     [Header("Respawn")]
     public float waitForSpawn = 3.0f;
@@ -78,7 +77,6 @@ public class PlayerEntity : MonoBehaviour
         spawnPoint = this.transform.position;
         if (GameManager.Instance != null)
             GameManager.Instance.players.Add(this);
-        walkSound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -157,16 +155,12 @@ public class PlayerEntity : MonoBehaviour
             moveParticle.enableEmission = true;
 
             _anim.SetBool("Run", true);
-            if (!walkSound.isPlaying)
-                walkSound.Play();
         }
         else
         {
             _anim.SetBool("Run", false);
             moveParticle.enableEmission = false;
 
-            if (walkSound.isPlaying)
-                walkSound.Stop();
         }
 
 

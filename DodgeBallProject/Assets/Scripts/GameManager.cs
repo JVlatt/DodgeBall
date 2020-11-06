@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public int leftPoints = 0;
     public int rightPoints = 0;
-    public float launchTimer = 5.0f;
+    public float launchTimer = 3.0f;
     public float launchGameTimer = 15.0f;
     private Transform spawnBall;
     public List<PlayerEntity> players = new List<PlayerEntity>();
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GAME_STATE.LAUNCH_ROUND:
-                launchTimer = 5.0f;
+                launchTimer = 3.0f;
                 UIManager.Instance.launchTimerHolder.SetActive(true);
                 break;
             case GAME_STATE.FREEZE:
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         SwitchState(GAME_STATE.FREEZE);
         yield return new WaitForSeconds(10.0f);
 
-        if (leftPoints == 2 || rightPoints == 2)
+        if (leftPoints == 3 || rightPoints == 3)
         {
             SwitchState(GAME_STATE.END);
         }

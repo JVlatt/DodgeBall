@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Animations;
-
+#endif
 public class RecordAnim : MonoBehaviour
 {
+#if UNITY_EDITOR
+
     public AnimationClip clip;
 
     private GameObjectRecorder m_Recorder;
@@ -39,4 +42,6 @@ public class RecordAnim : MonoBehaviour
             m_Recorder.SaveToClip(clip);
         }
     }
+#endif
+
 }

@@ -50,15 +50,12 @@ public class Goal : MonoBehaviour
         hp = maxHp;
         curState = GoalState.Full;
         destroyVFX.SetActive(false);
-        for(int i = 0; i < destroyVFX.transform.childCount; i++)
+        for (int i = 0; i < destroyVFX.transform.childCount; i++)
         {
             destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
         }
-        if (_anim != null)
-        {
-            _anim.SetInteger("State", 0);
-            _anim.SetTrigger("Reset");
-        }
+        _anim.SetInteger("State", 0);
+        _anim.SetTrigger("Reset");
     }
 
     public void Hurt(int damageIncrease)
@@ -74,7 +71,7 @@ public class Goal : MonoBehaviour
         animBackground.Play();
         animFill.Play();
 
-        if(hp <= maxHp && curState == GoalState.Full)
+        if (hp <= maxHp && curState == GoalState.Full)
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
@@ -83,7 +80,7 @@ public class Goal : MonoBehaviour
             _anim.SetInteger("State", 1);
         }
 
-        if(hp <= (3*maxHp)/4 && curState == GoalState.ThreeQuarter)
+        if (hp <= (3 * maxHp) / 4 && curState == GoalState.ThreeQuarter)
         {
             Instantiate(changeStateVFX, this.transform);
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
@@ -112,13 +109,14 @@ public class Goal : MonoBehaviour
         if (hp < 0)
             hp = 0;
 
-        if(hp > 0)
+        if (hp > 0)
             GameManager.Instance.LaunchBall();
         switch (hp)
         {
             case 1:
                 break;
             case 0:
+                _anim.SetInteger("State", 5);
                 CameraShaker.Instance.ShakeOnce(10f, 10f, 0.1f, 1f);
                 var tmp = Instantiate(explosionCristalVFX);
                 tmp.transform.position = this.transform.position;

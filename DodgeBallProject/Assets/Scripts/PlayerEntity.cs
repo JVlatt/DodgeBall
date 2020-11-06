@@ -204,6 +204,7 @@ public class PlayerEntity : MonoBehaviour
                 {
                     _anim.SetBool("Hold", false);
                     playerBall.Reset();
+                    playerBall = null;
                 }
                 respawnCooldown -= Time.deltaTime;
             }

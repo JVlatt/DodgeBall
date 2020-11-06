@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour
     public int stateIndex = 0;
 
     public GameObject hitPlayerVFX;
-    [HideInInspector] public List<GameObject> ballStateVFX;
+    public List<GameObject> ballStateVFX;
 
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
@@ -27,13 +27,14 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         ballSpawner.GetComponentInParent<BallSpawner>().ball = this;
+        _rb.isKinematic = true;
         GameManager.Instance.balls.Add(this);
         stateIndex = 0;
         transform.position = ballSpawner.transform.position;
-        for(int i = 0; i < gameObject.transform.childCount - 2; i++)
+        /*for(int i = 0; i < gameObject.transform.childCount - 2; i++)
         {
             ballStateVFX.Add(gameObject.transform.GetChild(i + 2).gameObject);
-        }
+        }*/
         for(int i = 0; i < ballStateVFX.Count; i++)
         {
             ballStateVFX[i].gameObject.SetActive(false);
@@ -150,5 +151,11 @@ public class Ball : MonoBehaviour
         transform.position = ballSpawner.position;
         direction = Vector3.zero;
         stateIndex = 0;
+        _rb.isKinematic = true;
+
+        for (int i = 0; i < ballStateVFX.Count; i++)
+        {
+            ballStateVFX[i].gameObject.SetActive(false);
+        }
     }
 }

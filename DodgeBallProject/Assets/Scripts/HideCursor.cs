@@ -8,4 +8,9 @@ public class HideCursor : MonoBehaviour
     {
         Cursor.visible = false;
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

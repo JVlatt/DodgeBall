@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         SwitchState(GAME_STATE.END_ROUND);
         yield return new WaitForSeconds(2.0f);
         SwitchState(GAME_STATE.FREEZE);
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(5.0f);
 
         if (leftPoints == 3 || rightPoints == 3)
         {

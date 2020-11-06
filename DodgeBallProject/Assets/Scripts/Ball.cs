@@ -27,10 +27,10 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         ballSpawner.GetComponentInParent<BallSpawner>().ball = this;
-        _rb.isKinematic = true;
         GameManager.Instance.balls.Add(this);
         stateIndex = 0;
         transform.position = ballSpawner.transform.position;
+        direction = Vector3.zero;
         /*for(int i = 0; i < gameObject.transform.childCount - 2; i++)
         {
             ballStateVFX.Add(gameObject.transform.GetChild(i + 2).gameObject);
@@ -82,7 +82,7 @@ public class Ball : MonoBehaviour
             collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex], 0.5f);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             stateIndex--;
-            stateIndex = Mathf.Clamp(stateIndex, 0, 3);
+            stateIndex = Mathf.Clamp(stateIndex, 1, 4);
             StartCoroutine(CanBumpPlayerCoroutine());
         }
     }
@@ -91,16 +91,9 @@ public class Ball : MonoBehaviour
     {
         this.transform.GetChild(1).GetComponent<TrailRenderer>().colorGradient = trailColors[stateIndex];
 
-        if (stateIndex == 0)
+        if (stateIndex <= 1)
         {
             ballStateVFX[0].SetActive(false);
-            ballStateVFX[1].SetActive(false);
-            ballStateVFX[2].SetActive(false);
-        }
-
-        if (stateIndex == 1)
-        {
-            ballStateVFX[0].SetActive(true);
             ballStateVFX[1].SetActive(false);
             ballStateVFX[2].SetActive(false);
         }
@@ -108,11 +101,18 @@ public class Ball : MonoBehaviour
         if (stateIndex == 2)
         {
             ballStateVFX[0].SetActive(true);
-            ballStateVFX[1].SetActive(true);
+            ballStateVFX[1].SetActive(false);
             ballStateVFX[2].SetActive(false);
         }
 
         if (stateIndex == 3)
+        {
+            ballStateVFX[0].SetActive(true);
+            ballStateVFX[1].SetActive(true);
+            ballStateVFX[2].SetActive(false);
+        }
+
+        if (stateIndex == 4)
         {
             ballStateVFX[0].SetActive(true);
             ballStateVFX[1].SetActive(true);
@@ -138,7 +138,7 @@ public class Ball : MonoBehaviour
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
             stateIndex++;
-            stateIndex = Mathf.Clamp(stateIndex, 0, 3);
+            stateIndex = Mathf.Clamp(stateIndex, 1, 4);
         }
         if (other.CompareTag("KillBall"))
         {
@@ -149,9 +149,9 @@ public class Ball : MonoBehaviour
     public void Reset()
     {
         transform.position = ballSpawner.position;
+        _rb.velocity = Vector3.zero;
         direction = Vector3.zero;
         stateIndex = 0;
-        _rb.isKinematic = true;
 
         for (int i = 0; i < ballStateVFX.Count; i++)
         {

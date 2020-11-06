@@ -55,6 +55,7 @@ public class Goal : MonoBehaviour
             destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
         }
         _anim.SetInteger("State", 0);
+        StartCoroutine(ResetCoroutine());
     }
 
     public IEnumerator ResetCoroutine()

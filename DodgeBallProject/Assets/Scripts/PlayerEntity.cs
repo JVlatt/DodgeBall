@@ -59,7 +59,7 @@ public class PlayerEntity : MonoBehaviour
     public bool stopMove;
     [HideInInspector]
     public bool rightAxisTouch;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isOnGround;
 
     private void Awake()
@@ -192,7 +192,7 @@ public class PlayerEntity : MonoBehaviour
     {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");

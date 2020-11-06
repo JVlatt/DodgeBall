@@ -55,7 +55,13 @@ public class Goal : MonoBehaviour
             destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
         }
         _anim.SetInteger("State", 0);
-        _anim.SetTrigger("Reset");
+    }
+
+    public IEnumerator ResetCoroutine()
+    {
+        _anim.SetBool("Reset",true);
+        yield return new WaitForSeconds(0.5f);
+        _anim.SetBool("Reset", false);
     }
 
     public void Hurt(int damageIncrease)
@@ -109,8 +115,6 @@ public class Goal : MonoBehaviour
         if (hp < 0)
             hp = 0;
 
-        if (hp > 0)
-            GameManager.Instance.LaunchBall();
         switch (hp)
         {
             case 1:

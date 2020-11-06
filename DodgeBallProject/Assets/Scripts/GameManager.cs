@@ -112,8 +112,6 @@ public class GameManager : MonoBehaviour
                 Reset();
                 break;
             case GAME_STATE.PLAY:
-                LaunchBall();
-                StartCoroutine(WaitForSecondBall());
                 UIManager.Instance.launchTimerHolder.SetActive(false);
                 UIManager.Instance.leftPoints.gameObject.SetActive(false);
                 UIManager.Instance.rightPoints.gameObject.SetActive(false);
@@ -122,7 +120,7 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.endCanvas.SetActive(true);
                 UIManager.Instance.endCanvas.transform.GetChild(0).gameObject.SetActive(true);
 
-                if(leftPoints == 2)
+                if(leftPoints == 3)
                 {
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().text = "Red Team wins !";
                     UIManager.Instance.endCanvas.GetComponentInChildren<Text>().color = Color.red;
@@ -159,7 +157,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator ScoringCoroutine()
     {
         SwitchState(GAME_STATE.END_ROUND);
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(2.0f);
         SwitchState(GAME_STATE.FREEZE);
         yield return new WaitForSeconds(10.0f);
 
@@ -180,18 +178,7 @@ public class GameManager : MonoBehaviour
             g.Reset();
         foreach (Destructible d in destructibles)
             d.Reset();
-        balls.Clear();
-    }
-    public void LaunchBall()
-    {
-        GameObject instantiatedBall = Instantiate(_ballPrefab, spawnBall.transform.position, Quaternion.identity, recorder.transform);
-        instantiatedBall.GetComponent<Ball>().direction = new Vector3(1, 0, 0);
-    }
-
-    IEnumerator WaitForSecondBall()
-    {
-        yield return new WaitForSeconds(0.5f);
-        GameObject instantiatedBall2 = Instantiate(_ballPrefab, spawnBall.transform.position, Quaternion.identity, recorder.transform);
-        instantiatedBall2.GetComponent<Ball>().direction = new Vector3(-1, 0, 0);
+        foreach (Ball b in balls)
+            b.Reset();
     }
 }

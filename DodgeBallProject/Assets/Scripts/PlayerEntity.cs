@@ -209,8 +209,7 @@ public class PlayerEntity : MonoBehaviour
                 if (playerBall != null)
                 {
                     _anim.SetBool("Hold", false);
-                    GameManager.Instance.balls.Remove(playerBall);
-                    GameManager.Instance.LaunchBall();
+                    playerBall.Reset();
                 }
                 respawnCooldown -= Time.deltaTime;
             }

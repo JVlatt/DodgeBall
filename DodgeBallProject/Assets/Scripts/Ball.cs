@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
 
     [HideInInspector] public Rigidbody _rb;
     [HideInInspector] public Collider _collider;
+    public Transform ballSpawner;
     private bool canBumpPlayer = true;
     private void Awake()
     {
@@ -25,9 +26,10 @@ public class Ball : MonoBehaviour
     }
     private void Start()
     {
+        ballSpawner.GetComponentInParent<BallSpawner>().ball = this;
         GameManager.Instance.balls.Add(this);
         stateIndex = 0;
-
+        transform.position = ballSpawner.transform.position;
         for(int i = 0; i < gameObject.transform.childCount - 2; i++)
         {
             ballStateVFX.Add(gameObject.transform.GetChild(i + 2).gameObject);
@@ -39,10 +41,7 @@ public class Ball : MonoBehaviour
     }
     public void Update()
     {
-        if (!GameManager.Instance.balls.Contains(this)) Destroy(this.gameObject);
-
         direction.y = 0;
-
         UpdateStateVFX();
     }
 
@@ -67,8 +66,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
-            GameManager.Instance.balls.Remove(this);
-            Destroy(this.gameObject);
+            Reset();
         }
 
         if (collision.gameObject.CompareTag("Player")&& canBumpPlayer)
@@ -143,8 +141,14 @@ public class Ball : MonoBehaviour
         }
         if (other.CompareTag("KillBall"))
         {
-            GameManager.Instance.LaunchBall();
-            Destroy(this.gameObject);
+            Reset();
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = ballSpawner.position;
+        direction = Vector3.zero;
+        stateIndex = 0;
     }
 }

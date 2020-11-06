@@ -24,7 +24,7 @@ public class PlayerEntity : MonoBehaviour
     private bool chargedShoot = false;
 
     private Animator _anim;
-    [HideInInspector]public Ball playerBall = null;
+    [HideInInspector] public Ball playerBall = null;
 
     [Header("Game Objects")]
     private GameObject modelObj;
@@ -66,7 +66,7 @@ public class PlayerEntity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         modelObj = this.gameObject;
-        _anim = GetComponent<Animator>();
+        _anim = GetComponentInChildren<Animator>();
         _anim.SetFloat("CatchDuration", _catchDurationMultiplier);
         moveParticle.enableEmission = false;
     }
@@ -76,13 +76,14 @@ public class PlayerEntity : MonoBehaviour
         waitForSpawnClock = waitForSpawn;
         respawnCooldownClock = respawnCooldown;
         spawnPoint = this.transform.position;
-        GameManager.Instance.players.Add(this);
+        if (GameManager.Instance != null)
+            GameManager.Instance.players.Add(this);
         walkSound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
+        //if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         _UpdateGravity();
 
         if (!stopMove)
@@ -91,10 +92,10 @@ public class PlayerEntity : MonoBehaviour
             _UpdateModelOrient();
         }
 
-        if(playerBall)
+        if (playerBall)
         {
             playerBall.transform.position = ballPivot.transform.position;
-            if(rightAxisTouch)
+            if (rightAxisTouch)
             {
                 _chargeClock += Time.deltaTime;
                 if (_chargeClock >= _holdTime)
@@ -117,12 +118,12 @@ public class PlayerEntity : MonoBehaviour
         if (_catchClock > 0f)
             _catchClock -= Time.deltaTime;
 
-        if(_dashClock > 0f)
+        if (_dashClock > 0f)
         {
             _dashClock -= Time.deltaTime;
         }
 
-        rb.velocity = new Vector3(_velocity.x,rb.velocity.y,_velocity.z);
+        rb.velocity = new Vector3(_velocity.x, rb.velocity.y, _velocity.z);
     }
 
     #region Functions Move
@@ -149,17 +150,19 @@ public class PlayerEntity : MonoBehaviour
     }
     private void _UpdateMove()
     {
-            _velocity = _moveDir * moveSpeed;
+        _velocity = _moveDir * moveSpeed;
 
-        if(_velocity != Vector3.zero)
+        if (_velocity != Vector3.zero)
         {
             moveParticle.enableEmission = true;
 
+            _anim.SetBool("Run", true);
             if (!walkSound.isPlaying)
                 walkSound.Play();
         }
         else
         {
+            _anim.SetBool("Run", false);
             moveParticle.enableEmission = false;
 
             if (walkSound.isPlaying)
@@ -168,17 +171,19 @@ public class PlayerEntity : MonoBehaviour
 
 
         if (!rightAxisTouch)
-            {
-                _orientDir = _velocity.normalized;
-            }
+        {
+            _orientDir = _velocity.normalized;
+        }
 
-        if(rightAxisTouch && playerBall)
+        if (rightAxisTouch && playerBall)
         {
             indic.SetActive(true);
+            _anim.SetBool("Aim", true);
         }
         else
         {
             indic.SetActive(false);
+            _anim.SetBool("Aim", false);
         }
     }
     #endregion
@@ -199,10 +204,11 @@ public class PlayerEntity : MonoBehaviour
             //Debug.Log("Did not Hit");
             isOnGround = false;
             waitForSpawn -= Time.deltaTime;
-            if(waitForSpawn <= 0)
+            if (waitForSpawn <= 0)
             {
                 if (playerBall != null)
                 {
+                    _anim.SetBool("Hold", false);
                     GameManager.Instance.balls.Remove(playerBall);
                     GameManager.Instance.LaunchBall();
                 }
@@ -214,8 +220,8 @@ public class PlayerEntity : MonoBehaviour
 
     private void Respawn()
     {
-        
-        if(waitForSpawn <= 0)
+
+        if (waitForSpawn <= 0)
         {
             rb.isKinematic = true;
             if (!respawnDisplayCreated)
@@ -244,6 +250,9 @@ public class PlayerEntity : MonoBehaviour
 
     public void LaunchBall()
     {
+        _anim.SetBool("Shoot",true);
+        _anim.SetBool("Hold", false);
+        _anim.SetBool("Aim", false);
         Vector3 ballDirection = (launchPoint.position - transform.position).normalized;
         ballDirection.y = 0;
         playerBall.transform.position = launchPoint.position;
@@ -256,19 +265,33 @@ public class PlayerEntity : MonoBehaviour
         _chargeClock = 0f;
         _dropClock = 0f;
         _catchClock = _catchCooldown;
+        StartCoroutine(ResetShootAnim());
     }
-
+    public IEnumerator ResetShootAnim()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _anim.SetBool("Shoot", false);
+    }
     public void TryCatch()
     {
         if (_catchClock > 0f || playerBall) return;
 
         _catchClock = _catchCooldown;
-        _anim.SetTrigger("Catch");
+        StartCoroutine(ResetCatchAnim());
     }
+
+    public IEnumerator ResetCatchAnim()
+    {
+        _anim.SetBool("Catch", true);
+        yield return new WaitForSeconds(1.0f);
+        _anim.SetBool("Catch", false);
+    }
+
     public void Catch(Ball ball)
     {
         catchBallParticle.Play();
         playerBall = ball;
+        _anim.SetBool("Hold", true);
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);
         playerBall.transform.GetChild(1).gameObject.SetActive(false);
         playerBall.direction = Vector3.zero;
@@ -288,6 +311,7 @@ public class PlayerEntity : MonoBehaviour
 
     public void Reset()
     {
+        _velocity = Vector3.zero;
         transform.position = spawnPoint;
     }
 

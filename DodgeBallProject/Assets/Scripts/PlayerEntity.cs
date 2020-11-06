@@ -83,7 +83,7 @@ public class PlayerEntity : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY) return;
         _UpdateGravity();
 
         if (!stopMove)

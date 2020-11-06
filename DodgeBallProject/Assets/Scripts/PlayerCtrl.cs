@@ -15,7 +15,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         entity = this.gameObject.transform.parent.GetComponent<PlayerEntity>();
         pauseCanvas = GameObject.FindObjectOfType<PauseMenu>();
-        UpdateID(0);
     }
 
     void Update()

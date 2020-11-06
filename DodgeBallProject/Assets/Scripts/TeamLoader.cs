@@ -7,7 +7,7 @@ public class TeamLoader : MonoBehaviour
 {
     public List<int> redTeam;
     public List<int> blueTeam;
-
+    public Animator anim;
     void Start()
     {
         if(SceneManager.GetActiveScene().name == "TeamSelection")
@@ -15,7 +15,14 @@ public class TeamLoader : MonoBehaviour
             redTeam = GameObject.FindObjectOfType<TeamManager>().redTeam;
             blueTeam = GameObject.FindObjectOfType<TeamManager>().blueTeam;
             DontDestroyOnLoad(this);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(LoadSceneCoroutine());
         }
+    }
+
+    IEnumerator LoadSceneCoroutine()
+    {
+        anim.SetTrigger("Transi");
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

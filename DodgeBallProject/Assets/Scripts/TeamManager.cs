@@ -43,8 +43,8 @@ public class TeamManager : MonoBehaviour
             {
                 controllersHolder.transform.GetChild(i).gameObject.SetActive(true);
                 controllers.Add(controllersHolder.transform.GetChild(i).gameObject);
-                controllersDisplay.transform.GetChild(i + 7).gameObject.SetActive(true);
-                displayList.Add(controllersDisplay.transform.GetChild(i + 7).gameObject);
+                controllersDisplay.transform.GetChild(i + 8).gameObject.SetActive(true);
+                displayList.Add(controllersDisplay.transform.GetChild(i + 8).gameObject);
                 listIndex.Add(i);
             }
         }

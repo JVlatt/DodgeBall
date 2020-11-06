@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerEntity> players = new List<PlayerEntity>();
     public List<Goal> goals = new List<Goal>();
     public List<Ball> balls = new List<Ball>();
+    public List<Destructible> destructibles = new List<Destructible>();
     public List<GameObject> redTeam;
     public List<GameObject> blueTeam;
     [SerializeField]private GameObject _ballPrefab;
@@ -177,7 +178,8 @@ public class GameManager : MonoBehaviour
             p.Reset();
         foreach (Goal g in goals)
             g.Reset();
-
+        foreach (Destructible d in destructibles)
+            d.Reset();
         balls.Clear();
     }
     public void LaunchBall()

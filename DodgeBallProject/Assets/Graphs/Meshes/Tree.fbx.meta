@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64031dac4dd552e46a3c74fdc19d65ba
+guid: 3759354643124234dbc915008a0d4677
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gradient
-    second: {fileID: 2100000, guid: 4bd5969bd06be064594769cb4dab2e6e, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 0aa6bb612c1e680408c39471545504d5, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -49,7 +49,7 @@ ModelImporter:
     importCameras: 0
     importLights: 0
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
@@ -93,7 +93,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

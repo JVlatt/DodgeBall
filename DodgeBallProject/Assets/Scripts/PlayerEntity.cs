@@ -41,6 +41,7 @@ public class PlayerEntity : MonoBehaviour
     private float respawnCooldownClock = 0f;
     public GameObject respawnDisplay;
     public GameObject respawnVFX;
+    public GameObject dashVFX;
     private GameObject respawnDisplayInstance;
     private Image respawnImage;
     private bool respawnDisplayCreated;
@@ -306,6 +307,9 @@ public class PlayerEntity : MonoBehaviour
     {
         if (_dashClock > 0) yield break;
 
+        var pos = this.transform.position;
+        var vfx = Instantiate(dashVFX);
+        vfx.transform.position = pos;
         stopMove = true;
         _dashClock = _dashCooldown;
         _velocity = _moveDir * _dashForce;

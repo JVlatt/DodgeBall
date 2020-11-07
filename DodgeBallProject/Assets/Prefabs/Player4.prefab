@@ -288,6 +288,7 @@ MonoBehaviour:
   respawnCooldown: 1
   respawnDisplay: {fileID: 6405042485193748626, guid: e27ba9b8e839b134991b8f9cc91e1d46, type: 3}
   respawnVFX: {fileID: 731100238563171591, guid: e56723f2e6931004a9bcdbe5a458915e, type: 3}
+  dashVFX: {fileID: 731100238563171591, guid: 7df226276580ecb4eb7d9b0dd2848984, type: 3}
   rb: {fileID: 0}
   stopMove: 0
   rightAxisTouch: 0

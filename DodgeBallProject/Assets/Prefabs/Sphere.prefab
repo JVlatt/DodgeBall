@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362419584713082847}
   - component: {fileID: 8225949287028787415}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: f87f61d8b0c32fb409c66f8f90045549, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +75,7 @@ TrailRenderer:
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.7
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -88,6 +88,15 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: 0
+        tangentMode: 5
+        weightedMode: 0
+        inWeight: 0.090909064
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -270,7 +279,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 0, g: 0.05725074, b: 1, a: 0.5019608}
+    key0: {r: 1, g: 0.99296933, b: 0, a: 0.5019608}
     key1: {r: 1, g: 1, b: 1, a: 0.5019608}
     key2: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
     key3: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
@@ -298,7 +307,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 0, g: 1, b: 0.06871343, a: 0.5019608}
+    key0: {r: 1, g: 0.5615012, b: 0, a: 0.5019608}
     key1: {r: 1, g: 1, b: 1, a: 0.5019608}
     key2: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
     key3: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}

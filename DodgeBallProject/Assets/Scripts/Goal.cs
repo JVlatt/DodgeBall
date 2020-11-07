@@ -11,7 +11,6 @@ public class Goal : MonoBehaviour
 
     public GameObject hitVFX;
     public GameObject changeStateVFX;
-    public GameObject destroyVFX;
     public GameObject explosionCristalVFX;
 
     private Slider healthBar;
@@ -49,11 +48,6 @@ public class Goal : MonoBehaviour
     {
         hp = maxHp;
         curState = GoalState.Full;
-        destroyVFX.SetActive(false);
-        for (int i = 0; i < destroyVFX.transform.childCount; i++)
-        {
-            destroyVFX.transform.GetChild(i).GetComponent<ParticleSystem>().Clear();
-        }
         _anim.SetInteger("State", 0);
         StartCoroutine(ResetCoroutine());
     }
@@ -125,7 +119,6 @@ public class Goal : MonoBehaviour
                 CameraShaker.Instance.ShakeOnce(10f, 10f, 0.1f, 1f);
                 var tmp = Instantiate(explosionCristalVFX);
                 tmp.transform.position = this.transform.position;
-                destroyVFX.SetActive(true);
                 StartCoroutine(SlowMo());
                 SoundManager.instance.CrystalBreak();
                 GameManager.Instance.AddPoint(gameObject.name);

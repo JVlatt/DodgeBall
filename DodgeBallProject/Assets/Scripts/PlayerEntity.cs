@@ -31,6 +31,7 @@ public class PlayerEntity : MonoBehaviour
     public Transform ballPivot;
     public Transform launchPoint;
     public GameObject indic;
+    public ParticleSystem catchVFX;
     private Vector3 spawnPoint;
     private Quaternion oriRot;
 
@@ -296,6 +297,7 @@ public class PlayerEntity : MonoBehaviour
 
     public void Catch(Ball ball)
     {
+        catchVFX.Play();
         playerBall = ball;
         _anim.SetBool("Hold", true);
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);

@@ -4827,7 +4827,6 @@ GameObject:
   - component: {fileID: 734777482806718561}
   - component: {fileID: 640632223153598583}
   - component: {fileID: 639626300574317211}
-  - component: {fileID: 843542114118819395}
   m_Layer: 0
   m_Name: Catch
   m_TagString: FxTemporaire
@@ -4844,7 +4843,7 @@ Transform:
   m_GameObject: {fileID: 731100238563171591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.9, y: 1.33, z: 5.58}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 734889036200033459}
   - {fileID: 4442403412647070858}
@@ -9519,19 +9518,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &843542114118819395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731100238563171591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
 --- !u!1 &6150147850723329802
 GameObject:
   m_ObjectHideFlags: 0

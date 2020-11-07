@@ -301,15 +301,18 @@ public class PlayerEntity : MonoBehaviour
     {
         if (_dashClock > 0) yield break;
 
-        var pos = this.transform.position;
-        var vfx = Instantiate(dashVFX);
-        vfx.transform.position = pos;
-        stopMove = true;
-        _dashClock = _dashCooldown;
-        _velocity = _moveDir * _dashForce;
-        yield return new WaitForSeconds(_dashDuration);
-        _velocity = Vector3.zero;
-        stopMove = false;
+        if(_velocity != Vector3.zero)
+        {
+            var pos = this.transform.position;
+            var vfx = Instantiate(dashVFX);
+            vfx.transform.position = pos;
+            stopMove = true;
+            _dashClock = _dashCooldown;
+            _velocity = _moveDir * _dashForce;
+            yield return new WaitForSeconds(_dashDuration);
+            _velocity = Vector3.zero;
+            stopMove = false;
+        }
     }
 
     public void Reset()

@@ -31,8 +31,6 @@ public class PlayerEntity : MonoBehaviour
     public Transform ballPivot;
     public Transform launchPoint;
     public GameObject indic;
-    public ParticleSystem moveParticle;
-    public ParticleSystem catchBallParticle;
     private Vector3 spawnPoint;
 
     [Header("Respawn")]
@@ -58,8 +56,10 @@ public class PlayerEntity : MonoBehaviour
     public bool stopMove;
     [HideInInspector]
     public bool rightAxisTouch;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isOnGround;
+    [HideInInspector]
+    public bool stopModelOrient;
 
     private void Awake()
     {
@@ -67,7 +67,6 @@ public class PlayerEntity : MonoBehaviour
         modelObj = this.gameObject;
         _anim = GetComponentInChildren<Animator>();
         _anim.SetFloat("CatchDuration", _catchDurationMultiplier);
-        moveParticle.enableEmission = false;
     }
 
     void Start()
@@ -87,7 +86,10 @@ public class PlayerEntity : MonoBehaviour
         if (!stopMove)
         {
             _UpdateMove();
-            _UpdateModelOrient();
+            if (!stopModelOrient)
+            {
+                _UpdateModelOrient();
+            }
         }
 
         if (playerBall)
@@ -152,15 +154,11 @@ public class PlayerEntity : MonoBehaviour
 
         if (_velocity != Vector3.zero)
         {
-            moveParticle.enableEmission = true;
-
             _anim.SetBool("Run", true);
         }
         else
         {
             _anim.SetBool("Run", false);
-            moveParticle.enableEmission = false;
-
         }
 
 
@@ -186,7 +184,7 @@ public class PlayerEntity : MonoBehaviour
     {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2, 1 << LayerMask.NameToLayer("Ground")))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             //Debug.Log("Did Hit");
@@ -283,7 +281,6 @@ public class PlayerEntity : MonoBehaviour
 
     public void Catch(Ball ball)
     {
-        catchBallParticle.Play();
         playerBall = ball;
         _anim.SetBool("Hold", true);
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.Networking;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -37,15 +38,16 @@ public class PlayerCtrl : MonoBehaviour
 
         if (entity.isOnGround)
         {
+            entity.stopModelOrient = false;
             Vector3 moveDir = new Vector3(dirX, 0, dirZ);
             moveDir.Normalize();
             entity.Move(moveDir);
         }
         else
         {
-            Vector3 moveDir = entity.rb.velocity;
+            entity.stopModelOrient = true;
+            Vector3 moveDir = new Vector3(dirX, entity.rb.velocity.y, dirZ);
             moveDir.Normalize();
-            moveDir.y = -50;
             entity.Move(moveDir);
         }
     }

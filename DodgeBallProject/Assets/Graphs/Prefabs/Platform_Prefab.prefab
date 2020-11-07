@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7173804209878092554}
   - component: {fileID: 5083029851906008143}
   - component: {fileID: 5371184386448341494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720315720302838258}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 5548714844189744671}
   - component: {fileID: 8840325644208492986}
   - component: {fileID: 6722697887349876080}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

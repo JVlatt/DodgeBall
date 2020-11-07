@@ -5,21 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 0
-    path: Assets/_Scenes/Leonard.unity
-    guid: d63a6ae85627def42917dba4c0d09e83
   - enabled: 1
     path: Assets/_Scenes/MainMenu.unity
     guid: 53695f3a30b8b5444ab68b81372cfe2d
   - enabled: 1
     path: Assets/_Scenes/TeamSelection.unity
     guid: 9ad80382c0a9dae478ff841ead4c3c9d
-  - enabled: 0
-    path: Assets/_Scenes/MattLD.unity
-    guid: c768126c8625bf6409243aefaf921968
   - enabled: 1
     path: Assets/_Scenes/TheoLD2.unity
     guid: e607fe2d7aa83884ca279fe70ceb731b

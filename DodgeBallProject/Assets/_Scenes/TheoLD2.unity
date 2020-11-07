@@ -282,6 +282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Prefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5371184386448341494, guid: 8c272464e65616a49b63a8b51418901c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
     - target: {fileID: 5548714844189744671, guid: 8c272464e65616a49b63a8b51418901c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -1808,7 +1812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _dashForce
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: turnSpeed
@@ -1824,7 +1828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: respawnCooldown
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _holdTime
@@ -1832,7 +1836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: waitForSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: m_Name
@@ -1858,8 +1862,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 116d86bf1b17a4c49a08444a4bc7047a, type: 2}
-    m_RemovedComponents:
-    - {fileID: 8033479319497776400, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
 --- !u!4 &216050665 stripped
 Transform:
@@ -1871,19 +1874,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
   m_PrefabInstance: {fileID: 216050664}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &216050667
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216050666}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.9999999, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &217688022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,7 +2230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _dashForce
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: turnSpeed
@@ -2256,7 +2246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: respawnCooldown
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _holdTime
@@ -2264,7 +2254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: waitForSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: m_Name
@@ -2290,8 +2280,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d96e1976c20d8d3439b59c5c493caeb8, type: 2}
-    m_RemovedComponents:
-    - {fileID: 8033479319497776400, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
 --- !u!1 &310562730
 GameObject:
@@ -2484,7 +2473,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315295160}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2497,7 +2486,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315295160}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2510,7 +2499,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315295160}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2523,7 +2512,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315295160}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -8139,7 +8128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _dashForce
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: turnSpeed
@@ -8155,7 +8144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: respawnCooldown
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _holdTime
@@ -8163,7 +8152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: waitForSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: m_Name
@@ -8189,8 +8178,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 36960e6cccdf00d488315d1644836bb0, type: 2}
-    m_RemovedComponents:
-    - {fileID: 8033479319497776400, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
 --- !u!4 &1135604129 stripped
 Transform:
@@ -8202,19 +8190,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
   m_PrefabInstance: {fileID: 1135604128}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1135604131
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135604130}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.9999999, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1136660519
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,19 +8516,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
   m_PrefabInstance: {fileID: 309261932}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1187491595
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187491591}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.9999999, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1187645621
 GameObject:
   m_ObjectHideFlags: 0
@@ -9911,7 +9873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _dashForce
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: turnSpeed
@@ -9927,7 +9889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: respawnCooldown
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: _holdTime
@@ -9935,7 +9897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776404, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: waitForSpawn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
       propertyPath: m_Name
@@ -9957,8 +9919,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3e28eebf7297d92469cf48294a468b07, type: 2}
-    m_RemovedComponents:
-    - {fileID: 8033479319497776400, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
 --- !u!4 &1408198809 stripped
 Transform:
@@ -9970,19 +9931,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8033479319497776431, guid: 0923cc961b73c97409f60cebd2832a39, type: 3}
   m_PrefabInstance: {fileID: 1408198808}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1408198811
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408198810}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.9999999, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1417033586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8173135500925736336, guid: 5dd4d6f2752fbd84fbd764679139b22e, type: 3}
@@ -13208,6 +13156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5371184386448341494, guid: 8c272464e65616a49b63a8b51418901c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 1112c13818a53a14986c11ec553adf00, type: 2}
     - target: {fileID: 5548714844189744671, guid: 8c272464e65616a49b63a8b51418901c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16

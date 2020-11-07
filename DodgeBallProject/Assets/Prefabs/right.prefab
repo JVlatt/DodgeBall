@@ -63,7 +63,6 @@ MonoBehaviour:
   maxHp: 100
   hitVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   changeStateVFX: {fileID: 3898583497399004146, guid: c1f8a2bbedd7405469490c0716b8f5cf, type: 3}
-  destroyVFX: {fileID: 0}
   explosionCristalVFX: {fileID: 0}
   curState: 0
 --- !u!1001 &7233193296042454841
@@ -170,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 2405761972730464924, guid: be49dd2bbb55ec34783db03f46b9ee9a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138423856980592272, guid: be49dd2bbb55ec34783db03f46b9ee9a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5897437306259077664, guid: be49dd2bbb55ec34783db03f46b9ee9a, type: 3}
       propertyPath: m_LocalPosition.x

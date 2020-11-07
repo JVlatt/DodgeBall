@@ -155,6 +155,7 @@ public class Ball : MonoBehaviour
     public void Reset()
     {
         _collider.isTrigger = true;
+        _collider.enabled = true;
         transform.position = ballSpawner.position;
         _rb.velocity = Vector3.zero;
         direction = Vector3.zero;

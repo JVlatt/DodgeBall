@@ -285,6 +285,7 @@ MonoBehaviour:
   launchPoint: {fileID: 6776797119971171825}
   indic: {fileID: 8082699542332292536}
   catchVFX: {fileID: 359001951163459814}
+  catchCollider: {fileID: 5121059086035262641}
   waitForSpawn: 3
   respawnCooldown: 1
   respawnDisplay: {fileID: 6405042485193748626, guid: e27ba9b8e839b134991b8f9cc91e1d46, type: 3}

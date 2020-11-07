@@ -92,6 +92,9 @@ public class PlayerCtrl : MonoBehaviour
         if (player.GetButtonDown("Catch"))
             entity.TryCatch();
 
+        if (player.GetButtonDown("Shoot") && entity.playerBall != null)
+            entity.LaunchBall();
+
         if (player.GetButtonDown("Dash"))
             entity.StartCoroutine(entity.Dash());
 

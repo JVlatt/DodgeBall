@@ -32,6 +32,7 @@ public class PlayerEntity : MonoBehaviour
     public Transform launchPoint;
     public GameObject indic;
     public ParticleSystem catchVFX;
+    public GameObject catchCollider;
     private Vector3 spawnPoint;
     private Quaternion oriRot;
 
@@ -74,6 +75,7 @@ public class PlayerEntity : MonoBehaviour
 
     void Start()
     {
+        catchCollider.SetActive(false);
         waitForSpawnClock = waitForSpawn;
         respawnCooldownClock = respawnCooldown;
         spawnPoint = this.transform.position;
@@ -107,25 +109,10 @@ public class PlayerEntity : MonoBehaviour
         if (playerBall)
         {
             playerBall.transform.position = ballPivot.transform.position;
-            if (rightAxisTouch)
-            {
-                _chargeClock += Time.deltaTime;
-                if (_chargeClock >= _holdTime)
-                    chargedShoot = true;
-                if (_chargeClock >= _maxHoldTime)
-                    LaunchBall();
-            }
-            else
-            {
-                if (chargedShoot)
-                    LaunchBall();
-                else
-                {
-                    _dropClock += Time.deltaTime;
-                    if (_dropClock > _maxHoldTime)
-                        LaunchBall();
-                }
-            }
+
+            _dropClock += Time.deltaTime;
+            if (_dropClock > _maxHoldTime)
+                LaunchBall();
         }
         if (_catchClock > 0f)
             _catchClock -= Time.deltaTime;
@@ -286,6 +273,7 @@ public class PlayerEntity : MonoBehaviour
     {
         if (_catchClock > 0f || playerBall) return;
 
+        catchCollider.SetActive(true);
         _catchClock = _catchCooldown;
         StartCoroutine(ResetCatchAnim());
     }
@@ -294,11 +282,13 @@ public class PlayerEntity : MonoBehaviour
     {
         _anim.SetBool("Catch", true);
         yield return new WaitForSeconds(1.0f);
+        catchCollider.SetActive(false);
         _anim.SetBool("Catch", false);
     }
 
     public void Catch(Ball ball)
     {
+        catchCollider.SetActive(false);
         catchVFX.Play();
         playerBall = ball;
         _anim.SetBool("Hold", true);

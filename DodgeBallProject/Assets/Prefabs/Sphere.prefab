@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3842204727148152551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6485569430750467349}
@@ -279,7 +279,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 1, g: 0.9641968, b: 0.5613208, a: 0.43137255}
+    key0: {r: 1, g: 0.9267974, b: 0.56078434, a: 0.43137255}
     key1: {r: 1, g: 0.9641968, b: 0.5613208, a: 0}
     key2: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
     key3: {r: 0.627451, g: 0.21960784, b: 0, a: 0.5019608}
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 1, g: 0.6747318, b: 0.25943398, a: 0.5019608}
+    key0: {r: 1, g: 0.64867723, b: 0.19999999, a: 0.5019608}
     key1: {r: 1, g: 0.6747318, b: 0.25943398, a: 0}
     key2: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
     key3: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
@@ -335,9 +335,9 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   - serializedVersion: 2
-    key0: {r: 1, g: 0.4009434, b: 0.41660488, a: 0.13725491}
+    key0: {r: 1, g: 0.56698865, b: 0.17647058, a: 0.5019608}
     key1: {r: 1, g: 0.4009434, b: 0.41660488, a: 0}
-    key2: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
+    key2: {r: 0.28235295, g: 0.22352941, b: 0, a: 0}
     key3: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
     key4: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
     key5: {r: 0.28235295, g: 0.22352941, b: 0, a: 0.5019608}
@@ -353,7 +353,7 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 65342
-    atime2: 0
+    atime2: 65342
     atime3: 0
     atime4: 0
     atime5: 0

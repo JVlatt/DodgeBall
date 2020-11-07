@@ -13,6 +13,9 @@ public class Goal : MonoBehaviour
     public GameObject changeStateVFX;
     public GameObject explosionCristalVFX;
 
+    public Collider bigCollider;
+    public Collider littleCollider;
+
     private Slider healthBar;
     private Animation animBackground;
     private Animation animFill;
@@ -30,6 +33,8 @@ public class Goal : MonoBehaviour
 
     void Start()
     {
+        bigCollider.enabled = true;
+        littleCollider.enabled = false;
         hp = maxHp;
         curState = GoalState.Full;
         GameManager.Instance.goals.Add(this);
@@ -46,6 +51,8 @@ public class Goal : MonoBehaviour
 
     public void Reset()
     {
+        bigCollider.enabled = true;
+        littleCollider.enabled = false;
         hp = maxHp;
         curState = GoalState.Full;
         _anim.SetInteger("State", 0);
@@ -105,6 +112,8 @@ public class Goal : MonoBehaviour
             CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             SoundManager.instance.LastCrystalState();
             _anim.SetInteger("State", 4);
+            bigCollider.enabled = false;
+            littleCollider.enabled = true;
         }
 
         if (hp < 0)

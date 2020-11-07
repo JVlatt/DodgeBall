@@ -71,10 +71,20 @@ public class Ball : MonoBehaviour
             trail.emitting = false;
             trail.gameObject.SetActive(false);
             SoundManager.instance.CrystalTouch();
-            collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
-            var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
-            tmp.transform.position = this.transform.position;
-            tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            if (collision.gameObject.name.Contains("Crystal"))
+            {
+                collision.gameObject.GetComponentInParent<Goal>().Hurt(damageIncrease[stateIndex]);
+                var tmp = Instantiate(collision.gameObject.GetComponentInParent<Goal>().hitVFX, collision.gameObject.GetComponentInParent<Goal>().transform);
+                tmp.transform.position = this.transform.position;
+                tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
+                var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
+                tmp.transform.position = this.transform.position;
+                tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            }
             Reset();
         }
 

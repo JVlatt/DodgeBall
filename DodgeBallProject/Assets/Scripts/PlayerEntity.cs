@@ -262,6 +262,8 @@ public class PlayerEntity : MonoBehaviour
         ballDirection.y = 0;
         if(playerBall != null)
         {
+            playerBall.stateIndex++;
+            playerBall.stateIndex = Mathf.Clamp(playerBall.stateIndex, 1, 4);
             playerBall.transform.position = launchPoint.position;
             playerBall.direction = ballDirection;
             playerBall._collider.enabled = true;
@@ -299,7 +301,6 @@ public class PlayerEntity : MonoBehaviour
     {
         catchVFX.Play();
         playerBall = ball;
-        playerBall.stateIndex++;
         _anim.SetBool("Hold", true);
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);
         playerBall.transform.GetChild(1).gameObject.SetActive(false);

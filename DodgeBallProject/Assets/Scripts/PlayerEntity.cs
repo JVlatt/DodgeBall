@@ -32,6 +32,7 @@ public class PlayerEntity : MonoBehaviour
     public Transform launchPoint;
     public GameObject indic;
     private Vector3 spawnPoint;
+    private Quaternion oriRot;
 
     [Header("Respawn")]
     public float waitForSpawn = 3.0f;
@@ -74,8 +75,17 @@ public class PlayerEntity : MonoBehaviour
         waitForSpawnClock = waitForSpawn;
         respawnCooldownClock = respawnCooldown;
         spawnPoint = this.transform.position;
+        oriRot = modelObj.transform.rotation;
         if (GameManager.Instance != null)
             GameManager.Instance.players.Add(this);
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY)
+        {
+            _anim.Rebind();
+        }
     }
 
     private void FixedUpdate()
@@ -308,6 +318,7 @@ public class PlayerEntity : MonoBehaviour
     {
         _velocity = Vector3.zero;
         transform.position = spawnPoint;
+        modelObj.transform.rotation = oriRot;
         if (playerBall != null)
             playerBall = null;
     }

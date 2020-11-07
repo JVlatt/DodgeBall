@@ -11,6 +11,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public PauseMenu pauseCanvas;
     private PlayerEntity entity;
+    private bool stopMove;
 
     void Start()
     {
@@ -22,11 +23,25 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (player == null) return;
         Inputs();
+
+        if (GameManager.Instance.state != GameManager.GAME_STATE.PLAY)
+        {
+            stopMove = true;
+            entity.rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            stopMove = false;
+        }
     }
 
     public void Inputs()
     {
-        MoveInputs();
+        if (!stopMove)
+        {
+            MoveInputs();
+        }
+
         OrientInputs();
         ActionsInputs();
     }

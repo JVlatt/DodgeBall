@@ -207,6 +207,7 @@ public class PlayerEntity : MonoBehaviour
                 respawnCooldown -= Time.deltaTime;
             }
             Respawn();
+            LaunchBall();
         }
     }
 
@@ -247,12 +248,15 @@ public class PlayerEntity : MonoBehaviour
         _anim.SetBool("Aim", false);
         Vector3 ballDirection = (launchPoint.position - transform.position).normalized;
         ballDirection.y = 0;
-        playerBall.transform.position = launchPoint.position;
-        playerBall.direction = ballDirection;
-        playerBall._collider.enabled = true;
-        playerBall._rb.isKinematic = false;
-        playerBall.transform.GetChild(1).gameObject.SetActive(true);
-        playerBall = null;
+        if(playerBall != null)
+        {
+            playerBall.transform.position = launchPoint.position;
+            playerBall.direction = ballDirection;
+            playerBall._collider.enabled = true;
+            playerBall._rb.isKinematic = false;
+            playerBall.transform.GetChild(1).gameObject.SetActive(true);
+            playerBall = null;
+        }
         chargedShoot = false;
         _chargeClock = 0f;
         _dropClock = 0f;

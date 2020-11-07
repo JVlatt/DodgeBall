@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour
         stateIndex = 0;
         transform.position = ballSpawner.transform.position;
         direction = Vector3.zero;
+        _collider.isTrigger = true;
         /*for(int i = 0; i < gameObject.transform.childCount - 2; i++)
         {
             ballStateVFX.Add(gameObject.transform.GetChild(i + 2).gameObject);
@@ -137,6 +138,7 @@ public class Ball : MonoBehaviour
         {
             PlayerEntity entity = other.GetComponentInParent<PlayerEntity>();
             if (!entity || entity.playerBall != null) return;
+            _collider.isTrigger = false;
             _collider.enabled = false;
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
@@ -152,6 +154,7 @@ public class Ball : MonoBehaviour
 
     public void Reset()
     {
+        _collider.isTrigger = true;
         transform.position = ballSpawner.position;
         _rb.velocity = Vector3.zero;
         direction = Vector3.zero;

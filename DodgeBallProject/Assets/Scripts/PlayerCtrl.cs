@@ -43,7 +43,10 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         OrientInputs();
-        ActionsInputs();
+        if(GameManager.Instance.state == GameManager.GAME_STATE.PLAY)
+        {
+            ActionsInputs();
+        }
     }
 
     public void MoveInputs()
@@ -90,10 +93,16 @@ public class PlayerCtrl : MonoBehaviour
     public void ActionsInputs()
     {
         if (player.GetButtonDown("Catch"))
-            entity.TryCatch();
-
-        if (player.GetButtonDown("Shoot") && entity.playerBall != null)
-            entity.LaunchBall();
+        {
+            if(entity.playerBall == null)
+            {
+                entity.TryCatch();
+            }
+            else
+            {
+                entity.LaunchBall();
+            }
+        }
 
         if (player.GetButtonDown("Dash"))
             entity.StartCoroutine(entity.Dash());

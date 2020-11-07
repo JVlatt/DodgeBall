@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public List<Gradient> trailColors;
     public int stateIndex = 0;
 
+    public TrailRenderer trail;
     public GameObject hitPlayerVFX;
     public List<GameObject> ballStateVFX;
 
@@ -67,6 +68,8 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Goal"))
         {
+            trail.emitting = false;
+            trail.gameObject.SetActive(false);
             SoundManager.instance.CrystalTouch();
             collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
             var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
@@ -136,6 +139,8 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Catch"))
         {
+            trail.gameObject.SetActive(true);
+            trail.emitting = true;
             PlayerEntity entity = other.GetComponentInParent<PlayerEntity>();
             if (!entity || entity.playerBall != null) return;
             _collider.isTrigger = false;

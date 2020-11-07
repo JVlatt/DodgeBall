@@ -143,7 +143,6 @@ public class Ball : MonoBehaviour
             other.GetComponentInParent<PlayerEntity>().Catch(this);
             _rb.rotation = Quaternion.identity;
             _rb.isKinematic = true;
-            stateIndex++;
             stateIndex = Mathf.Clamp(stateIndex, 1, 4);
         }
         if (other.CompareTag("KillBall"))

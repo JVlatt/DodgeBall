@@ -299,6 +299,7 @@ public class PlayerEntity : MonoBehaviour
     {
         catchVFX.Play();
         playerBall = ball;
+        playerBall.stateIndex++;
         _anim.SetBool("Hold", true);
         Bump(playerBall.direction, playerBall.bumpForce[playerBall.stateIndex], 0.1f);
         playerBall.transform.GetChild(1).gameObject.SetActive(false);

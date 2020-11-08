@@ -195,8 +195,7 @@ public class PlayerEntity : MonoBehaviour
         {
             if (!fallSound)
             {
-                SoundManager.instance.Fall();
-                fallSound = true;
+                StartCoroutine(FallSound());
             }
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
@@ -216,6 +215,13 @@ public class PlayerEntity : MonoBehaviour
             Respawn();
             LaunchBall();
         }
+    }
+
+    public IEnumerator FallSound()
+    {
+        yield return new WaitForSeconds(1.0f);
+        SoundManager.instance.Fall();
+        fallSound = true;
     }
 
     private void Respawn()

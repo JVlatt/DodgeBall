@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
 
     public TrailRenderer trail;
     public GameObject hitPlayerVFX;
+    public GameObject hitWallVFX;
     public List<GameObject> ballStateVFX;
 
     [HideInInspector] public Rigidbody _rb;
@@ -62,6 +63,9 @@ public class Ball : MonoBehaviour
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
             SoundManager.instance.HitWall();
+            var tmp = Instantiate(hitWallVFX, collision.gameObject.transform);
+            tmp.transform.position = this.transform.position;
+            tmp.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         }
         if (collision.gameObject.CompareTag("Destructible"))
         {
@@ -69,6 +73,8 @@ public class Ball : MonoBehaviour
             collision.gameObject.GetComponent<Destructible>().Hurt();
             SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
             SoundManager.instance.HitWall();
+            var tmp = Instantiate(collision.gameObject.GetComponent<Destructible>().hitVFX, collision.gameObject.GetComponent<Destructible>().transform);
+            tmp.transform.position = this.transform.position;
         }
         if (collision.gameObject.CompareTag("Goal"))
         {

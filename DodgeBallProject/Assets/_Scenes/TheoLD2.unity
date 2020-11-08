@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
+  hitVFX: {fileID: 0}
 --- !u!65 &117531775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16137,7 +16138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502af2296e245d49b089b84e6a0d359, type: 2}
   m_sharedMaterial: {fileID: 5077349461663277318, guid: c502af2296e245d49b089b84e6a0d359, type: 2}

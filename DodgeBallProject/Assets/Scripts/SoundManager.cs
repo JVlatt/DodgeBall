@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Events Sounds")]
     public AudioSource hitWall;
+    public AudioSource wallFall;
     public AudioSource scorePoint;
     public AudioSource lastCrystalState;
     public AudioSource crystalTouch;
@@ -85,6 +86,10 @@ public class SoundManager : MonoBehaviour
     public void HitWall()
     {
         hitWall.Play();
+    }
+    public void WallFall()
+    {
+        wallFall.Play();
     }
     public void ScorePoint()
     {

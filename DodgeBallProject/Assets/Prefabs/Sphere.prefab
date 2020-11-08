@@ -365,6 +365,7 @@ MonoBehaviour:
   stateIndex: 0
   trail: {fileID: 8225949287028787415}
   hitPlayerVFX: {fileID: 731100238563171591, guid: 002ad7378bb88984987bb8b1acf4dca7, type: 3}
+  hitWallVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   ballStateVFX:
   - {fileID: 5552058981148836656}
   - {fileID: 2538121560382092475}

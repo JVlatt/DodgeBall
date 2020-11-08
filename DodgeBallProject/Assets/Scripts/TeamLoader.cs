@@ -17,6 +17,11 @@ public class TeamLoader : MonoBehaviour
             DontDestroyOnLoad(this);
             StartCoroutine(LoadSceneCoroutine());
         }
+
+        if(SceneManager.GetActiveScene().name == "TheoLD")
+        {
+
+        }
     }
 
     IEnumerator LoadSceneCoroutine()

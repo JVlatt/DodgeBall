@@ -64,6 +64,7 @@ public class PlayerEntity : MonoBehaviour
     public bool isOnGround;
     [HideInInspector]
     public bool stopModelOrient;
+    private bool fallSound = false;
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class PlayerEntity : MonoBehaviour
 
     void Start()
     {
+        isOnGround = true;
         catchCollider.SetActive(false);
         waitForSpawnClock = waitForSpawn;
         respawnCooldownClock = respawnCooldown;
@@ -191,6 +193,12 @@ public class PlayerEntity : MonoBehaviour
         }
         else
         {
+            if (!fallSound)
+            {
+                SoundManager.instance.Fall();
+                fallSound = true;
+            }
+
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
             //Debug.Log("Did not Hit");
             isOnGround = false;
@@ -236,12 +244,14 @@ public class PlayerEntity : MonoBehaviour
                 vfx.transform.position = respawnDisplayInstance.transform.position;
                 Destroy(respawnDisplayInstance);
                 respawnDisplayCreated = false;
+                fallSound = false;
             }
         }
     }
 
     public void LaunchBall()
     {
+        SoundManager.instance.ThrowBall();
         _anim.SetBool("Shoot",true);
         _anim.SetBool("Hold", false);
         _anim.SetBool("Aim", false);
@@ -288,6 +298,7 @@ public class PlayerEntity : MonoBehaviour
 
     public void Catch(Ball ball)
     {
+        SoundManager.instance.CatchBall();
         catchCollider.SetActive(false);
         catchVFX.Play();
         playerBall = ball;
@@ -303,6 +314,7 @@ public class PlayerEntity : MonoBehaviour
 
         if(_velocity != Vector3.zero)
         {
+            SoundManager.instance.Dash();
             var pos = this.transform.position;
             var vfx = Instantiate(dashVFX);
             vfx.transform.position = pos;

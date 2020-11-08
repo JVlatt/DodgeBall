@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public List<Gradient> trailColors;
     public int stateIndex = 0;
 
+    public TrailRenderer trail;
     public GameObject hitPlayerVFX;
     public List<GameObject> ballStateVFX;
 
@@ -59,30 +60,44 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+            SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
+            SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Destructible"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             collision.gameObject.GetComponent<Destructible>().Hurt();
+            SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
+            SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Goal"))
         {
+            trail.emitting = false;
+            trail.gameObject.SetActive(false);
             SoundManager.instance.CrystalTouch();
-            collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
-            var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
-            tmp.transform.position = this.transform.position;
-            tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            if (collision.gameObject.name.Contains("Crystal"))
+            {
+                collision.gameObject.GetComponentInParent<Goal>().Hurt(damageIncrease[stateIndex]);
+                var tmp = Instantiate(collision.gameObject.GetComponentInParent<Goal>().hitVFX, collision.gameObject.GetComponentInParent<Goal>().transform);
+                tmp.transform.position = this.transform.position;
+                tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Goal>().Hurt(damageIncrease[stateIndex]);
+                var tmp = Instantiate(collision.gameObject.GetComponent<Goal>().hitVFX, collision.gameObject.GetComponent<Goal>().transform);
+                tmp.transform.position = this.transform.position;
+                tmp.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            }
             Reset();
         }
 
         if (collision.gameObject.CompareTag("Player")&& canBumpPlayer)
         {
             Debug.Log("Collide Player");
-
-            var pos = collision.transform;
+            SoundManager.instance.HitPlayer();
             var vfx = Instantiate(hitPlayerVFX);
-            vfx.transform.position = pos.position;
-            vfx.transform.rotation = pos.rotation;
+            vfx.transform.position = this.transform.position;
 
             collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex], 0.5f);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
@@ -136,6 +151,8 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag("Catch"))
         {
+            trail.gameObject.SetActive(true);
+            trail.emitting = true;
             PlayerEntity entity = other.GetComponentInParent<PlayerEntity>();
             if (!entity || entity.playerBall != null) return;
             _collider.isTrigger = false;

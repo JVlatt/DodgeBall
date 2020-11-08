@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &6283497518371059896
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796848383981266021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.012508635
+  m_Height: 0.07525437
+  m_Direction: 2
+  m_Center: {x: -0.0011214325, y: -0.0013872315, z: 0.016241664}
 --- !u!1 &7963421050366008131
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +78,8 @@ MonoBehaviour:
   hitVFX: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   changeStateVFX: {fileID: 3898583497399004146, guid: c1f8a2bbedd7405469490c0716b8f5cf, type: 3}
   explosionCristalVFX: {fileID: 0}
+  bigCollider: {fileID: 7963421050366008132}
+  littleCollider: {fileID: 6283497518371059896}
   curState: 0
 --- !u!1001 &7233193296042454841
 PrefabInstance:
@@ -136,11 +152,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Statue_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 8029794547537333084, guid: b581be81a938865428717a8f3346b56c, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b581be81a938865428717a8f3346b56c, type: 3}
 --- !u!4 &19467741673868870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215997180322259327, guid: b581be81a938865428717a8f3346b56c, type: 3}
+  m_PrefabInstance: {fileID: 7233193296042454841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &796848383981266021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8029794547537333084, guid: b581be81a938865428717a8f3346b56c, type: 3}
   m_PrefabInstance: {fileID: 7233193296042454841}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7963421049033319664

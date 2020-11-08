@@ -60,12 +60,14 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+            SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
             SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Destructible"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             collision.gameObject.GetComponent<Destructible>().Hurt();
+            SoundManager.instance.hitWall.pitch = Random.Range(0.8f, 1.2f);
             SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Goal"))

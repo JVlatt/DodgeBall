@@ -96,10 +96,8 @@ public class Ball : MonoBehaviour
         {
             Debug.Log("Collide Player");
             SoundManager.instance.HitPlayer();
-            var pos = collision.transform;
             var vfx = Instantiate(hitPlayerVFX);
-            vfx.transform.position = pos.position;
-            vfx.transform.rotation = pos.rotation;
+            vfx.transform.position = this.transform.position;
 
             collision.gameObject.GetComponent<PlayerEntity>().Bump(collision.contacts[0].normal * -1, bumpForce[stateIndex], 0.5f);
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);

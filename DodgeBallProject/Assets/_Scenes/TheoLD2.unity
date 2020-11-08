@@ -4245,6 +4245,7 @@ MonoBehaviour:
   - {fileID: 338773286}
   - {fileID: 1408198810}
   _ballPrefab: {fileID: 6485569430750467359, guid: 6dc2c8a913098da409372f27d96b4c51, type: 3}
+  crowd: {fileID: 1269454313}
   state: 0
   recorder: {fileID: 1457752770}
 --- !u!4 &564940191

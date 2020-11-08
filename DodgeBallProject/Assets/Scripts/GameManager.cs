@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> redTeam;
     public List<GameObject> blueTeam;
     [SerializeField]private GameObject _ballPrefab;
+    public Animator crowd;
     public enum GAME_STATE
     {
         LAUNCH_GAME,
@@ -145,9 +146,11 @@ public class GameManager : MonoBehaviour
         {
             case "left":
                 rightPoints++;
+                crowd.SetTrigger("Blue");
                 break;
             case "right":
                 leftPoints++;
+                crowd.SetTrigger("Red");
                 break;
             default:
                 break;

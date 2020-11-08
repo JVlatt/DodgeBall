@@ -219,9 +219,13 @@ public class PlayerEntity : MonoBehaviour
 
     public IEnumerator FallSound()
     {
-        yield return new WaitForSeconds(1.0f);
-        SoundManager.instance.Fall();
-        fallSound = true;
+        yield return new WaitForSeconds(0.5f);
+
+        if (!isOnGround)
+        {
+            SoundManager.instance.Fall();
+            fallSound = true;
+        }
     }
 
     private void Respawn()

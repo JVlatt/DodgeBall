@@ -193,11 +193,6 @@ public class PlayerEntity : MonoBehaviour
         }
         else
         {
-            if (!fallSound)
-            {
-                StartCoroutine(FallSound());
-            }
-
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
             //Debug.Log("Did not Hit");
             isOnGround = false;
@@ -214,17 +209,6 @@ public class PlayerEntity : MonoBehaviour
             }
             Respawn();
             LaunchBall();
-        }
-    }
-
-    public IEnumerator FallSound()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        if (!isOnGround)
-        {
-            SoundManager.instance.Fall();
-            fallSound = true;
         }
     }
 

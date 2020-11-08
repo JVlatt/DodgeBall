@@ -60,11 +60,13 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+            SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Destructible"))
         {
             direction = Vector3.Reflect(direction, collision.contacts[0].normal);
             collision.gameObject.GetComponent<Destructible>().Hurt();
+            SoundManager.instance.HitWall();
         }
         if (collision.gameObject.CompareTag("Goal"))
         {
@@ -91,7 +93,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")&& canBumpPlayer)
         {
             Debug.Log("Collide Player");
-
+            SoundManager.instance.HitPlayer();
             var pos = collision.transform;
             var vfx = Instantiate(hitPlayerVFX);
             vfx.transform.position = pos.position;

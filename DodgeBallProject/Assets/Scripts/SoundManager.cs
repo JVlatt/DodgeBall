@@ -11,9 +11,15 @@ public class SoundManager : MonoBehaviour
     public AudioSource button_click;
     public AudioSource selectionEquipe;
 
-   // public AudioSource dash;
+    [Header("Player Sounds")]
+    public AudioSource catchBall;
+    public AudioSource throwBall;
+    public AudioSource hitPlayer;
+    public AudioSource fall;
+    public AudioSource dash;
 
     [Header("Events Sounds")]
+    public AudioSource hitWall;
     public AudioSource scorePoint;
     public AudioSource lastCrystalState;
     public AudioSource crystalTouch;
@@ -49,7 +55,37 @@ public class SoundManager : MonoBehaviour
         selectionEquipe.Play();
     }
 
+    //Player
+    public void CatchBall()
+    {
+        catchBall.Play();
+    }
+
+    public void ThrowBall()
+    {
+        throwBall.Play();
+    }
+
+    public void HitPlayer()
+    {
+        hitPlayer.Play();
+    }
+
+    public void Fall()
+    {
+        fall.Play();
+    }
+
+    public void Dash()
+    {
+        dash.Play();
+    }
+
     //Events
+    public void HitWall()
+    {
+        hitWall.Play();
+    }
     public void ScorePoint()
     {
         scorePoint.Play();
